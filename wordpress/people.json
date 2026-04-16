@@ -1,0 +1,1502 @@
+[
+  {
+    "name": "Ben Brosseau",
+    "roles": [
+      "Board Member"
+    ],
+    "boardTitle": "Secretary",
+    "disciplines": [],
+    "specialties": [],
+    "email": "bbski_81@hotmail.com",
+    "id": "ben-brosseau",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Nick Dawson",
+    "roles": [
+      "Board Member"
+    ],
+    "boardTitle": "",
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "email": "nick@nickdawson.net",
+    "certifications": [
+      {
+        "name": "Alpine Level 2",
+        "designation": "A2",
+        "date": "2022-04"
+      },
+      {
+        "name": "Alpine Level 1",
+        "designation": "A1",
+        "date": "2021-02"
+      },
+      {
+        "name": "Children's Specialist 1",
+        "designation": "CS1",
+        "date": "2022-12"
+      }
+    ],
+    "inProgress": "Alpine Level III",
+    "id": "nick-dawson",
+    "staffTitle": "",
+    "chairTitle": "",
+    "bio": ""
+  },
+  {
+    "name": "Sierra Hooge",
+    "roles": [
+      "Board Member"
+    ],
+    "boardTitle": "",
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Children's Specialist",
+      "Freestyle"
+    ],
+    "email": "sierrahooge@gmail.com",
+    "id": "sierra-hooge",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Stu Hoyt",
+    "roles": [
+      "Board Member",
+      "Education Staff"
+    ],
+    "boardTitle": "National Board Representative",
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [
+      "Senior Teaching"
+    ],
+    "email": "stuhoyt@yahoo.com",
+    "id": "stu-hoyt",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Chris Kruckeberg",
+    "roles": [
+      "Board Member"
+    ],
+    "boardTitle": "Vice Chair",
+    "disciplines": [],
+    "specialties": [],
+    "email": "cxcrucker@hotmail.com",
+    "id": "chris-kruckeberg",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Josh LaForest",
+    "roles": [
+      "Board Member"
+    ],
+    "boardTitle": "Treasurer",
+    "disciplines": [],
+    "specialties": [],
+    "email": "g3tgviz@yahoo.com",
+    "id": "josh-laforest",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Bob Morcom",
+    "roles": [
+      "Board Member",
+      "Education Staff"
+    ],
+    "boardTitle": "",
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Senior Teaching"
+    ],
+    "email": "morcomzm63@gmail.com",
+    "id": "bob-morcom",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Hannah Sulhoff",
+    "roles": [
+      "Board Member"
+    ],
+    "boardTitle": "",
+    "disciplines": [],
+    "specialties": [],
+    "email": "",
+    "id": "hannah-sulhoff",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Herb Davis",
+    "roles": [
+      "Office Staff",
+      "Education Staff"
+    ],
+    "staffTitle": "NRM CEO",
+    "disciplines": [
+      "Nordic"
+    ],
+    "specialties": [],
+    "email": "",
+    "id": "herb-davis",
+    "boardTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Jill Imsand Chumbley",
+    "roles": [
+      "Office Staff",
+      "Education Staff"
+    ],
+    "staffTitle": "NRM Education Director",
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "email": "",
+    "id": "jill-imsand-chumbley",
+    "boardTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Jessica Quay",
+    "roles": [
+      "Office Staff"
+    ],
+    "staffTitle": "NRM Member Services Director",
+    "disciplines": [],
+    "specialties": [],
+    "email": "",
+    "id": "jessica-quay",
+    "boardTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Brenna Kelleher",
+    "roles": [
+      "Discipline Chair",
+      "Education Staff"
+    ],
+    "chairTitle": "Alpine Discipline Chair",
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "email": "kellyherebrenna@gmail.com",
+    "id": "brenna-kelleher",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Paul Monk",
+    "roles": [
+      "Discipline Chair",
+      "Education Staff",
+      "Iron Team"
+    ],
+    "chairTitle": "Snowboard Discipline Chair",
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "email": "snow.pro.wydaho@gmail.com",
+    "id": "paul-monk",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Chad Biggerstaff",
+    "roles": [
+      "Discipline Chair",
+      "Education Staff"
+    ],
+    "chairTitle": "Adaptive Education Chair",
+    "disciplines": [
+      "Adaptive"
+    ],
+    "specialties": [],
+    "email": "nrm.adaptive@gmail.com",
+    "id": "chad-biggerstaff",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Dylan Ault",
+    "roles": [
+      "Discipline Chair",
+      "Education Staff",
+      "Iron Team"
+    ],
+    "chairTitle": "Telemark Chair",
+    "disciplines": [
+      "Alpine",
+      "Telemark"
+    ],
+    "specialties": [],
+    "email": "dylan.panama@gmail.com",
+    "id": "dylan-ault",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Denise Wade",
+    "roles": [
+      "Discipline Chair",
+      "Education Staff"
+    ],
+    "chairTitle": "Cross Country Discipline Chair",
+    "disciplines": [
+      "Nordic"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "email": "denisecwade@gmail.com",
+    "id": "denise-wade",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Chester Fox",
+    "roles": [
+      "Specialty Chair",
+      "Education Staff",
+      "Iron Team"
+    ],
+    "chairTitle": "Freestyle Specialist Chair",
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Freestyle"
+    ],
+    "email": "",
+    "id": "chester-fox",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Grant Nakamura",
+    "roles": [
+      "Specialty Chair",
+      "Education Staff"
+    ],
+    "chairTitle": "Children's Specialist Chair",
+    "disciplines": [],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "email": "",
+    "id": "grant-nakamura",
+    "boardTitle": "",
+    "staffTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Jim Anderson",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "jim-anderson",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Nick Ault",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "nick-ault",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Christine Baker",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "christine-baker",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Taylor Cabellero",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "taylor-cabellero",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "JB Carroll",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "jb-carroll",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Dave Casto",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "dave-casto",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Stew Chumbley",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine",
+      "Telemark"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "stew-chumbley",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Theresa Gerdin",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "theresa-gerdin",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Steve Hill",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine",
+      "Telemark"
+    ],
+    "specialties": [
+      "Senior Teaching"
+    ],
+    "id": "steve-hill",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Shannon Hubbard",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "shannon-hubbard",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Yusuke Inoue",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "yusuke-inoue",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Conor Kelleher",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "conor-kelleher",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Eliza Kuntz",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Children's Specialist",
+      "Senior Teaching"
+    ],
+    "id": "eliza-kuntz",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Dave Lyons",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "dave-lyons",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Kayla Lyons",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "kayla-lyons",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Kevin Mabry",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "kevin-mabry",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Mary Marshall",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine",
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "mary-marshall",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Campbell Mason",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "campbell-mason",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Zoe Mavis",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "zoe-mavis",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Mike Merchant",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "mike-merchant",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "AJ Oliver",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "aj-oliver",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Francesca Pavillard-Cain",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Alpine",
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "francesca-pavillard-cain",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Nathaniel Petram",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "nathaniel-petram",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Leigh Plowman",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "leigh-plowman",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Eric Sheckleton",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine",
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "eric-sheckleton",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Emily Smith",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Alpine"
+    ],
+    "specialties": [],
+    "id": "emily-smith",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Darby Ask",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "darby-ask",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Nate Bartnik",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "nate-bartnik",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Bridger Biggins",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "bridger-biggins",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Chris Blake",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "chris-blake",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Shae Bouchard",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "shae-bouchard",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Andy Copeland",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Senior Teaching"
+    ],
+    "id": "andy-copeland",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Ben Daniel",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "ben-daniel",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Tim Dietz",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "tim-dietz",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Jim Driver",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "jim-driver",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "JJ Exton",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "jj-exton",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Sean Gwinner",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "sean-gwinner",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Bryan Jackson",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "bryan-jackson",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Chris Kronebusch",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "chris-kronebusch",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Whitney Kulich",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "whitney-kulich",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Matt Larson",
+    "roles": [
+      "Education Staff",
+      "Iron Team"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "matt-larson",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Aron Pickston",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "aron-pickston",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Rock Reman",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [
+      "Senior Teaching"
+    ],
+    "id": "rock-reman",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Jonatan Stillman",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "jonatan-stillman",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Derek Wittenberg",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Snowboard"
+    ],
+    "specialties": [],
+    "id": "derek-wittenberg",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Grant Bishop",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "grant-bishop",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Adam Johnson",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "adam-johnson",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Derek Lennon",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "derek-lennon",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Dalton Medford",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "dalton-medford",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Cory Orofino",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "cory-orofino",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Matt Ruuhela",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Telemark"
+    ],
+    "specialties": [],
+    "id": "matt-ruuhela",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Dan Campbell",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Nordic"
+    ],
+    "specialties": [],
+    "id": "dan-campbell",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Brenda Winkler",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Nordic"
+    ],
+    "specialties": [],
+    "id": "brenda-winkler",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Trevor Hildebrand",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [
+      "Adaptive"
+    ],
+    "specialties": [],
+    "id": "trevor-hildebrand",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Kyle Tilley",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "kyle-tilley",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Katie White",
+    "roles": [
+      "Education Staff"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Children's Specialist"
+    ],
+    "id": "katie-white",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Ryan Barner",
+    "roles": [
+      "Iron Team"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Freestyle"
+    ],
+    "id": "ryan-barner",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Jon Farnam",
+    "roles": [
+      "Iron Team"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Freestyle"
+    ],
+    "id": "jon-farnam",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Ben Goff",
+    "roles": [
+      "Iron Team"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Freestyle"
+    ],
+    "id": "ben-goff",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "James Mackay",
+    "roles": [
+      "Iron Team"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Freestyle"
+    ],
+    "id": "james-mackay",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  },
+  {
+    "name": "Mitch Orloff",
+    "roles": [
+      "Iron Team"
+    ],
+    "disciplines": [],
+    "specialties": [
+      "Freestyle"
+    ],
+    "id": "mitch-orloff",
+    "email": "",
+    "boardTitle": "",
+    "staffTitle": "",
+    "chairTitle": "",
+    "certifications": [],
+    "inProgress": "",
+    "bio": ""
+  }
+]

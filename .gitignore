@@ -1,0 +1,14 @@
+# OS
+.DS_Store
+
+# WordPress runtime (not in repo — only theme/plugin source)
+wordpress/wp_data/
+wordpress/db_data/
+wordpress/uploads/
+
+# Node (prototype)
+node_modules/
+.next/
+
+# Sensitive
+*.env

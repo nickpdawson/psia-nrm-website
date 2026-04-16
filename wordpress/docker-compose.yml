@@ -1,0 +1,39 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: nrm-wp-db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: nrmW0rdPr3ss2026!
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: nrmWP2026secure
+    volumes:
+      - db_data:/var/lib/mysql
+
+  wordpress:
+    image: wordpress:6.7-php8.3-apache
+    container_name: nrm-wp
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "3080:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: nrmWP2026secure
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_TABLE_PREFIX: nrm_
+    volumes:
+      - wp_data:/var/www/html
+      - ./themes:/var/www/html/wp-content/themes/psia-nrm
+      - ./plugins/nrm-import.php:/var/www/html/wp-content/plugins/nrm-import.php
+      - ./uploads:/var/www/html/wp-content/uploads
+      - ./people.json:/var/www/people.json
+      - ./events.json:/var/www/events.json
+      - ./members.json:/var/www/members.json
+
+volumes:
+  db_data:
+  wp_data:
