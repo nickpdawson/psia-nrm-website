@@ -12,3 +12,11 @@ node_modules/
 
 # Sensitive
 *.env
+!*.env.example
+
+# Migration artifacts (exports, dumps — never commit)
+migration/exports/
+
+# Logs
+*.log
+deploy/.secrets/

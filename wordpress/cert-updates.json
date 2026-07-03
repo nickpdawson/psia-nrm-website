@@ -1,0 +1,807 @@
+{
+  "alpine": {
+    "nrm_national_standards_url": "https://thesnowpros.org/certification/national-certification-standards/",
+    "nrm_cert_levels": [
+      {
+        "name": "Level I",
+        "slug": "level-i",
+        "description": "Entry-level certification. Unique among levels: coaching is provided during the two-day assessment. A great starting point for new instructors.",
+        "prerequisites": "Registered member of PSIA-AASI and PSIA-AASI NRM with current dues paid\nComplete the Alpine Level I E-Learning Course before signing up for the event\nRegister and pay for the event at least one week prior\nLevel 1 Prep Course (2-day preparation clinic) REQUIRED if you are not currently teaching at a PSIA-AASI Member School or have not completed a new-hire training clinic at a member school",
+        "modules": "Ski Performance (scored)\nMovement Analysis / Technical Understanding (scored)\nTeaching and People Skills (scored)\n\nAll three modules assessed over 2 days; attendance required both days.\nMust pass all three to certify.\nCoaching is provided throughout the event.",
+        "documents": [
+          {
+            "name": "PSIA Alpine Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "PSIA Alpine Level I Assessment Form (Oct 2025, single combined form)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/10/AlpineLevel-I-AssessmentForm_Edits_101625.pdf"
+          },
+          {
+            "name": "NRM Alpine Level I Assessment Activities (Google Sheet PDF export)",
+            "url": "https://docs.google.com/spreadsheets/d/1y4PiygBXq4GEGDC7ggdoPdUskZa8Tadjouv_sguvAoI/export?format=pdf"
+          },
+          {
+            "name": "PSIA Alpine Level I E-Learning Course (required before signing up)",
+            "url": "https://lms.thesnowpros.org/product/alpine-level-i-e-learning-course/"
+          },
+          {
+            "name": "PSIA Alpine Level I Progressions Video",
+            "url": "https://vimeo.com/643384364/36a358d7e0"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      },
+      {
+        "name": "Level II",
+        "slug": "level-ii",
+        "description": "Intermediate certification. Candidates must ski all green and blue terrain including bumps and un-groomed conditions, plus groomed moderate black terrain. Teaches adults and children through the Intermediate Zone.",
+        "prerequisites": "Alpine Level I certification\n2 of 3 prep clinics within a 3-season window:\n  • Teaching/People Prep (2 days)\n  • Ski Performance Prep (2 days)\n  • MA/Tech Understanding Prep (2 days)\n\nNote: Failed module retakes do not require prep clinic repetition. Attempting a single module only requires the corresponding prep clinic.\nRecommended certificates before Level II: Children's Specialist 1 and Freestyle Specialist 1",
+        "modules": "Ski Performance\nMovement Analysis / Technical Understanding\nTeaching and People Skills\n\nThree modules taken in any order.\nOnce a module is passed, it is banked to your profile and does not need to be retaken.\nMust pass all three to certify.\nNote: Banked (passed) modules are forfeited if PSIA-AASI membership lapses more than one year.",
+        "documents": [
+          {
+            "name": "PSIA Alpine Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "PSIA Alpine Level II Assessment Form – Teaching (Oct 2025)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/10/AlpineLevel-II-AssessmentForm_Edits_101625.pdf"
+          },
+          {
+            "name": "PSIA Level II Alpine Skiing Performance Assessment Form (pre-Oct 2025)",
+            "url": "https://thesnowpros.org/download/PSIA-Certified-Level-II-Alpine-Skiing-Performance-Assessment-Form.pdf"
+          },
+          {
+            "name": "PSIA Level II Alpine MA/Technical Understanding Assessment Form (pre-Oct 2025)",
+            "url": "https://thesnowpros.org/download/PSIA-Certified-Level-II-Alpine-Movement-Analysis-Technical-Understanding-Assessment-Form.pdf"
+          },
+          {
+            "name": "NRM Alpine Level II Assessment Activities – Ski Performance (Google Sheet PDF export)",
+            "url": "https://docs.google.com/spreadsheets/d/1Pv14kOy9n6nC3OeGG5A67nZBE1LnAHhN9tXNG9L5XMY/export?format=pdf"
+          },
+          {
+            "name": "Alpine Level II Ski Performance Prep Outline (Google Doc)",
+            "url": "https://docs.google.com/document/d/1Oz2VFHYkO2E22LwXWivAUTimWAqi60Fv/export?format=pdf&ouid=117611299044159866860&rtpof=true&sd=true"
+          },
+          {
+            "name": "Alpine Level II MA/Tech Prep Outline (Google Doc)",
+            "url": "https://docs.google.com/document/d/1SGFcMrhVIx1abq6MGzuxzSUBtWZ8Jsss/export?format=pdf&ouid=117611299044159866860&rtpof=true&sd=true"
+          },
+          {
+            "name": "Alpine Level II Teaching/People Prep Outline (Google Doc)",
+            "url": "https://docs.google.com/document/d/1x6_Vh4E5Pd0yIJoNaBKOxXdUvNkncTWe/export?format=pdf&ouid=117611299044159866860&rtpof=true&sd=true"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/product/alpine-level-ii-professional-knowledge-exam/",
+        "exam_note": "Online Professional Knowledge Exam required (score ≥83%) before registering for the on-snow assessment. Once passed, the score remains valid — no retake needed even if the on-snow portion is not passed."
+      },
+      {
+        "name": "Level III",
+        "slug": "level-iii",
+        "description": "Advanced certification. Candidates must ski all green, blue, and black terrain (double black where available) in most conditions. Teaches adults and children through the Advanced Zone (level 9 skiers). The pinnacle of NRM alpine certification.",
+        "prerequisites": "Alpine Level II certification\n2 of 3 prep clinics within a 3-season window:\n  • Teaching/People Prep (2 days)\n  • Ski Performance Prep (2 days)\n  • MA/Tech Understanding Prep (2 days)\n\nNote: Failed module retakes do not require prep clinic repetition. Attempting a single module only requires the corresponding prep clinic.",
+        "modules": "Ski Performance\nMovement Analysis / Technical Understanding\nTeaching and People Skills\n\nThree modules taken in any order.\nOnce a module is passed, it is banked to your profile and does not need to be retaken.\nMust pass all three to certify.\nNote: Banked (passed) modules are forfeited if PSIA-AASI membership lapses more than one year.",
+        "documents": [
+          {
+            "name": "PSIA Alpine Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "PSIA Alpine Level III Assessment Form – Teaching (Oct 2025)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/10/AlpineLevel-III-AssessmentForm_Edits_101625.pdf"
+          },
+          {
+            "name": "PSIA Level III Alpine Skiing Performance Assessment Form (pre-Oct 2025)",
+            "url": "https://thesnowpros.org/download/PSIA-Certified-Level-III-Alpine-Skiing-Performance-Assessment-Form.pdf"
+          },
+          {
+            "name": "PSIA Level III Alpine MA/Technical Understanding Assessment Form (pre-Oct 2025)",
+            "url": "https://thesnowpros.org/download/PSIA-Certified-Level-III-Alpine-Movement-Analysis-Technical-Understanding-Assessment-Form.pdf"
+          },
+          {
+            "name": "NRM Alpine Level III Assessment Activities – Ski Performance (Google Sheet PDF export)",
+            "url": "https://docs.google.com/spreadsheets/d/1ahvAKgj1Po1BKSXHIH-dkLpXtXU-JKJe0isVDboq_HQ/export?format=pdf"
+          },
+          {
+            "name": "Alpine Level III Ski Performance Prep Outline (Google Doc)",
+            "url": "https://docs.google.com/document/d/1Klqbh_FBOF-BWffwGCPc0IDhsIWnPEaF/export?format=pdf&ouid=117611299044159866860&rtpof=true&sd=true"
+          },
+          {
+            "name": "Alpine Level III MA/Tech Prep Outline (Google Doc)",
+            "url": "https://docs.google.com/document/d/1eICMn6khcAl9Oei0JjjRg0Dhy1U9vUso/export?format=pdf&ouid=117611299044159866860&rtpof=true&sd=true"
+          },
+          {
+            "name": "Alpine Level III Teaching/People Prep Outline (Google Doc)",
+            "url": "https://docs.google.com/document/d/1fz5hqCk5jnGnXWk9U_MArdMOhOe4ZB6p/export?format=pdf&ouid=117611299044159866860&rtpof=true&sd=true"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/product/alpine-level-iii-professional-knowledge-exam/",
+        "exam_note": "Online Professional Knowledge Exam required (score ≥83%) before registering for the on-snow assessment. Once passed, the score remains valid — no retake needed even if the on-snow portion is not passed."
+      }
+    ]
+  },
+  "snowboard": {
+    "nrm_national_standards_url": "https://thesnowpros.org/certification/national-certification-standards/",
+    "nrm_cert_levels": [
+      {
+        "name": "Level I",
+        "slug": "level-i",
+        "description": "Entry-level snowboard certification with coaching during the two-day assessment.",
+        "prerequisites": "Current member of AASI NRM (members of other regions must have their home region's permission)\nComplete the Snowboard Level I E-Learning Course at least 48 hours prior to the on-snow event\nRead and be familiar with the AASI Snowboard Technical Manual\nLevel 1 Prep Course (2-day preparation clinic) REQUIRED if you are not currently teaching at a PSIA-AASI Member School or have not completed a new-hire training clinic at a member school",
+        "modules": "Riding Performance\nMovement Analysis / Technical Understanding\nTeaching and People Skills\n\nAll three modules over 2 days.\nCandidates are assessed through assessment activities, interviews, and scenarios in beginner and easier intermediate terrain and extra-small to small freestyle features.",
+        "documents": [
+          {
+            "name": "AASI Snowboard Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "AASI Certified Level I Snowboard Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-I-Snowboard-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Snowboard Level 1 Assessment Activities",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-1-assessment-activities.pdf"
+          },
+          {
+            "name": "AASI Snowboard Core Activities List",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-core-activities.pdf"
+          },
+          {
+            "name": "AASI Snowboard Assessment Activities Descriptions",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-assessment-activities-descriptions.pdf"
+          },
+          {
+            "name": "AASI Snowboard Level I E-Learning Course (required 48 hours before the event)",
+            "url": "https://lms.thesnowpros.org/product/snowboard-level-i-e-learning-course/"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      },
+      {
+        "name": "Level II",
+        "slug": "level-ii",
+        "description": "Intermediate certification. Three-day assessment format with two assessors.",
+        "prerequisites": "Snowboard Level I certification (current member of AASI NRM, or home-region permission)\nPass the online Level II Professional Knowledge Exam with a minimum score of 83% per section at least 48 hours before the prep clinic\nAttend and participate in all three days of the Level II Preparation Clinic, taken in NRM (valid the season taken plus the following season)",
+        "modules": "Movement Analysis / Technical Understanding\nTeaching\nRiding Performance\n\nOffered as a 3-day block of modules (MA/Tech, Teaching, Riding, in that order) that can be taken all at once or individually.\nAny module can be retaken individually if not passed. Pass all three to certify.\nIf you fail the assessment, the prep clinic and written test do not need to be retaken while still valid.",
+        "documents": [
+          {
+            "name": "AASI Snowboard Certification Standards (Oct 2022 v2)",
+            "url": "https://thesnowpros.org/download/AASI_Snowboard_Certification_Standards1022_v2.pdf"
+          },
+          {
+            "name": "AASI Level II Snowboard Teaching Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-II-Snowboard-Teaching-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Level II Snowboard Riding Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-II-Snowboard-Riding-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Level II Snowboard MA/Technical Understanding Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-II-Snowboard-Movement-Analysis-Technical-Understanding-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Snowboard Level 2 Assessment Activities",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-2-assessment-activities.pdf"
+          },
+          {
+            "name": "AASI Snowboard Assessment Activities Descriptions",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-assessment-activities-descriptions.pdf"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/product/snowboard-level-ii-professional-knowledge-exam/",
+        "exam_note": "Online Professional Knowledge Exam required (score ≥83% per section) at least 48 hours before the prep clinic. Valid the season taken plus the following season."
+      },
+      {
+        "name": "Level III",
+        "slug": "level-iii",
+        "description": "Advanced certification requiring ability to ride all terrain types and teach advanced riders.",
+        "prerequisites": "Snowboard Level II certification (current member of AASI NRM, or home-region permission)\nPass the online Level III Professional Knowledge Exam with a minimum score of 83% per section at least 48 hours before the prep clinic\nAttend and participate in a three-day Level III Preparation Clinic, taken in NRM during the same season as the assessment or the season before (valid the season taken plus the following season)",
+        "modules": "Movement Analysis / Technical Understanding\nTeaching\nRiding Performance\n\nOffered as a 3-day block of modules (MA/Tech, Teaching, Riding, in that order) that can be taken all at once or individually.\nAny module can be retaken individually if not passed. Pass all three to certify.\nCandidates teach and demonstrate in all terrain and on small to medium freestyle features.",
+        "documents": [
+          {
+            "name": "AASI Snowboard Certification Standards (Oct 2022 v2)",
+            "url": "https://thesnowpros.org/download/AASI_Snowboard_Certification_Standards1022_v2.pdf"
+          },
+          {
+            "name": "AASI Level III Snowboard Teaching Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-III-Snowboard-Teaching-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Level III Snowboard Riding Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-III-Snowboard-Riding-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Level III Snowboard MA/Technical Understanding Assessment Form",
+            "url": "https://thesnowpros.org/download/AASI-Certified-Level-III-Snowboard-Movement-Analysis-Technical-Understanding-Assessment-Form.pdf"
+          },
+          {
+            "name": "AASI Snowboard Level 3 Assessment Activities",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-3-assessment-activities.pdf"
+          },
+          {
+            "name": "AASI Snowboard Assessment Activities Descriptions",
+            "url": "/wp-content/uploads/docs/aasi-snowboard-assessment-activities-descriptions.pdf"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/product/snowboard-level-iii-professional-knowledge-exam/",
+        "exam_note": "Online Professional Knowledge Exam required (score ≥83% per section) at least 48 hours before the prep clinic. Valid the season taken plus the following season."
+      }
+    ]
+  },
+  "telemark-discipline": {
+    "nrm_national_standards_url": "https://thesnowpros.org/certification/national-certification-standards/",
+    "nrm_cert_levels": [
+      {
+        "name": "Level I",
+        "slug": "level-i",
+        "description": "Entry-level telemark certification. Assessment activities include shuffle turns, hockey stops, monomarks, garlands, uphill arcs, skating.",
+        "prerequisites": "Current PSIA-AASI / PSIA-AASI NRM membership\nComplete and pass the Telemark Level I Professional Knowledge Exam",
+        "modules": "Day 1: Ski Performance + Movement Analysis / Technical Understanding\nDay 2: Teaching and People Skills\n\nEach assessment day is scored separately with written and verbal feedback.\nPassed modules are banked with the region — at a future assessment you only join the module(s) you still need.\nAssessment activity demonstrations are available as videos — see the '(video)' entries under Documents.",
+        "documents": [
+          {
+            "name": "PSIA Telemark Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "Hockey Stop – Alpine (video)",
+            "url": "https://youtu.be/TNEaGa2ZMoM"
+          },
+          {
+            "name": "Monomark 1 (video)",
+            "url": "https://youtu.be/RHfmqjia60c"
+          },
+          {
+            "name": "Monomark 2 (video)",
+            "url": "https://youtu.be/D_3p05swo0k"
+          },
+          {
+            "name": "Basic Garlands – Alpine (video)",
+            "url": "https://matrix.thesnowpros.org/video/basic-garlands/"
+          },
+          {
+            "name": "Guided Uphill Arc (video)",
+            "url": "https://www.youtube.com/watch?v=5DEKE-cqXvw"
+          },
+          {
+            "name": "Skating 1 (video)",
+            "url": "https://youtu.be/Th5OmB_LKcE"
+          },
+          {
+            "name": "Skating 2 (video)",
+            "url": "https://youtu.be/JBULCN3yjh8"
+          },
+          {
+            "name": "Skating 3 (video)",
+            "url": "https://youtu.be/Ax-QP2OMOEE"
+          },
+          {
+            "name": "Skating 4 (video)",
+            "url": "https://youtu.be/HcOoWY5PRiM"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/",
+        "exam_note": "Telemark Level I Professional Knowledge Exam required (via the PSIA-AASI LMS)."
+      },
+      {
+        "name": "Level II",
+        "slug": "level-ii",
+        "description": "Intermediate telemark certification with expanded assessment activities including railroad tracks, pivot slips, shuffle turns, and basic leapers.",
+        "prerequisites": "Telemark Level I certification\nComplete and pass the Telemark Level II Professional Knowledge Exam\nAttend a Level II Telemark prep clinic or Telemark Educational Event",
+        "modules": "Day 1: Ski Performance + Movement Analysis / Technical Understanding\nDay 2: Teaching and People Skills\n\nEach assessment day is scored separately with written and verbal feedback.\nPassed modules are banked with the region — at a future assessment you only join the module(s) you still need.\nAssessment activity demonstrations are available as videos — see the '(video)' entries under Documents.\nLevel II and III assessments are conducted jointly due to low enrollment in Telemark events.",
+        "documents": [
+          {
+            "name": "PSIA Telemark Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "Railroad Tracks – Alpine (video)",
+            "url": "https://www.youtube.com/watch?v=2a3ttAqbZ_Y"
+          },
+          {
+            "name": "Monomark 1 (video)",
+            "url": "https://youtu.be/RHfmqjia60c"
+          },
+          {
+            "name": "Monomark 2 (video)",
+            "url": "https://youtu.be/D_3p05swo0k"
+          },
+          {
+            "name": "Telemark Pivot Slips (video)",
+            "url": "https://youtu.be/OIsEVYqyMZI"
+          },
+          {
+            "name": "Alpine Pivot Slips (video)",
+            "url": "https://youtu.be/MogjPzYlXwU"
+          },
+          {
+            "name": "Outside Ski Turns 1 (video)",
+            "url": "https://youtu.be/fk2t6D3lRfU"
+          },
+          {
+            "name": "Outside Ski Turns 2 (video)",
+            "url": "https://youtu.be/JAhvWROS0XU"
+          },
+          {
+            "name": "Skating 1 (video)",
+            "url": "https://youtu.be/Th5OmB_LKcE"
+          },
+          {
+            "name": "Skating 2 (video)",
+            "url": "https://youtu.be/JBULCN3yjh8"
+          },
+          {
+            "name": "Skating 3 (video)",
+            "url": "https://youtu.be/Ax-QP2OMOEE"
+          },
+          {
+            "name": "Skating 4 (video)",
+            "url": "https://youtu.be/HcOoWY5PRiM"
+          },
+          {
+            "name": "Hockey Stop – Alpine (video)",
+            "url": "https://youtu.be/TNEaGa2ZMoM"
+          },
+          {
+            "name": "Leaper – Alpine (video)",
+            "url": "https://youtu.be/e5qU8k5A_6k"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/",
+        "exam_note": "Telemark Level II Professional Knowledge Exam required (via the PSIA-AASI LMS)."
+      },
+      {
+        "name": "Level III",
+        "slug": "level-iii",
+        "description": "Advanced telemark certification. Activities include monomarks, pivot slips, shuffle turns, outside/inside ski turns, skating, and leapers. Unified regional exams available at Snowbird, UT.",
+        "prerequisites": "Telemark Level II certification\nComplete and pass the Telemark Level III Professional Knowledge Exam\nAttend a Level III Telemark prep clinic or Telemark Educational Event",
+        "modules": "Day 1: Ski Performance + Movement Analysis / Technical Understanding\nDay 2: Teaching and People Skills\n\nEach assessment day is scored separately with written and verbal feedback.\nPassed modules are banked with the region — at a future assessment you only join the module(s) you still need.\nAssessment activity demonstrations are available as videos — see the '(video)' entries under Documents.\nLevel II and III assessments are conducted jointly due to low enrollment in Telemark events.",
+        "documents": [
+          {
+            "name": "PSIA Telemark Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "Monomark 1 (video)",
+            "url": "https://youtu.be/RHfmqjia60c"
+          },
+          {
+            "name": "Monomark 2 (video)",
+            "url": "https://youtu.be/D_3p05swo0k"
+          },
+          {
+            "name": "Telemark Pivot Slips (video)",
+            "url": "https://youtu.be/OIsEVYqyMZI"
+          },
+          {
+            "name": "Alpine Pivot Slips (video)",
+            "url": "https://youtu.be/MogjPzYlXwU"
+          },
+          {
+            "name": "Outside Ski Turns 1 (video)",
+            "url": "https://youtu.be/fk2t6D3lRfU"
+          },
+          {
+            "name": "Outside Ski Turns 2 (video)",
+            "url": "https://youtu.be/JAhvWROS0XU"
+          },
+          {
+            "name": "Skating 1 (video)",
+            "url": "https://youtu.be/Th5OmB_LKcE"
+          },
+          {
+            "name": "Skating 2 (video)",
+            "url": "https://youtu.be/JBULCN3yjh8"
+          },
+          {
+            "name": "Skating 3 (video)",
+            "url": "https://youtu.be/Ax-QP2OMOEE"
+          },
+          {
+            "name": "Skating 4 (video)",
+            "url": "https://youtu.be/HcOoWY5PRiM"
+          },
+          {
+            "name": "Leaper – Alpine (video)",
+            "url": "https://youtu.be/e5qU8k5A_6k"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/",
+        "exam_note": "Telemark Level III Professional Knowledge Exam required (via the PSIA-AASI LMS)."
+      }
+    ]
+  },
+  "cross-country-discipline": {
+    "nrm_national_standards_url": "https://thesnowpros.org/certification/national-certification-standards/",
+    "nrm_cert_levels": [
+      {
+        "name": "Level I",
+        "slug": "level-i",
+        "description": "Entry-level cross country certification covering classic and skating fundamentals.",
+        "prerequisites": "PSIA-AASI / PSIA-AASI NRM membership\nComplete the Cross Country Level I E-Learning Course",
+        "modules": "Ski Performance\nMovement Analysis / Technical Understanding\nTeaching and People Skills\n\nTwo-day Level I assessment.",
+        "documents": [
+          {
+            "name": "PSIA Cross Country Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "Cross Country Level I E-Learning Course",
+            "url": "https://lms.thesnowpros.org/product/cross-country-level-i-e-learning-course/"
+          },
+          {
+            "name": "Delivering the Cross Country Beginner Experience E-Learning Course",
+            "url": "https://lms.thesnowpros.org/product/delivering-the-beginner-experience-cross-country/"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      },
+      {
+        "name": "Level II",
+        "slug": "level-ii",
+        "description": "Intermediate cross country certification. Certified to teach intermediate nordic lessons.",
+        "prerequisites": "Cross Country Level I certification\nComplete the Cross Country Level II Workbook (required)",
+        "modules": "Ski Performance\nMovement Analysis / Technical Understanding\nTeaching and People Skills\n\nThree-day, all-inclusive preparation clinic and assessment (written workbook, skiing, teaching scenarios, discussions).\nLevel II and III assessments are offered together as one event — intended certification level must be declared at the start of the assessment.\nMay be offered every other year if demand is low.",
+        "documents": [
+          {
+            "name": "PSIA Cross Country Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "Cross Country Level II Workbook (required)",
+            "url": "https://lms.thesnowpros.org/courses/cross-country-level-2-workbook/"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      },
+      {
+        "name": "Level III",
+        "slug": "level-iii",
+        "description": "Advanced cross country certification. Certified to teach all levels of nordic lessons.",
+        "prerequisites": "Cross Country Level II certification\nComplete the Cross Country Level III Workbook (required)\nPrerequisite exceptions possible by petition to the Cross Country discipline chair (nrm.nordic@gmail.com) for qualified candidates with a cross country race or coaching background (send petition and resume)",
+        "modules": "Ski Performance\nMovement Analysis / Technical Understanding\nTeaching and People Skills\n\nThree-day, all-inclusive preparation clinic and assessment (written workbook, skiing, teaching scenarios, discussions).\nLevel II and III assessments are offered together as one event — intended certification level must be declared at the start of the assessment.\nMay be offered every other year if demand is low.",
+        "documents": [
+          {
+            "name": "PSIA Cross Country Certification Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "Cross Country Level III Workbook (required)",
+            "url": "https://lms.thesnowpros.org/courses/cross-country-level-3-workbook/"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      }
+    ]
+  },
+  "adaptive-discipline": {
+    "nrm_national_standards_url": "https://thesnowpros.org/certification/national-certification-standards/",
+    "nrm_cert_levels": [
+      {
+        "name": "Level I",
+        "slug": "level-i",
+        "description": "Entry-level adaptive certification. Requires existing Alpine Level I or Snowboard Level I.",
+        "prerequisites": "Alpine Level 1 or Snowboard Level 1 certification (required prior to any Level 1 or Level 2 Adaptive assessment)\nPSIA-AASI NRM membership (register online or call the NRM region office at 406-581-6139)",
+        "modules": "Assessed per the PSIA-AASI Adaptive Certification Standards: People Skills, Teaching Skills, and the adaptive module being assessed (Adaptive Alpine or Adaptive Snowboard pathway).\nNote: all candidates receive adaptive alpine scorecards regardless of being on snowboard or alpine skis until adaptive snowboard-specific forms are finalized.",
+        "documents": [
+          {
+            "name": "PSIA-AASI Adaptive Certification Standards, Performance Guides & Assessment Forms",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "NRM Adaptive Exam Required Information (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1efYr3rVW17LhDDuOKA2D1n21hHcoINs8&export=download"
+          },
+          {
+            "name": "NRM Adaptive Common Clinics List (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1ihOrkSQb9EHf5v9fHptqnWclov9wZ_h2&export=view"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Three-Track E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-three-track/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Four-Track E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-four-track/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Bi-Ski E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-bi-ski/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Mono-Ski E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-mono-ski/"
+          },
+          {
+            "name": "PSIA-RM Adaptive Alpine Education Materials (free)",
+            "url": "https://www.psia-rm.org/adaptive-alpine/adaptive-alpine-education-materials/"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/professional-knowledge-exams/",
+        "exam_note": "The correct online professional knowledge exam module must be completed a minimum of 72 hours prior to the on-snow assessment (expect it to take a couple of hours)."
+      },
+      {
+        "name": "Level II",
+        "slug": "level-ii",
+        "description": "Intermediate adaptive certification.",
+        "prerequisites": "Adaptive Level I certification\nAlpine Level 1 or Snowboard Level 1 certification",
+        "modules": "Assessed per the PSIA-AASI Adaptive Certification Standards: People Skills, Teaching Skills, and the adaptive module being assessed (Adaptive Alpine or Adaptive Snowboard pathway).\nNote: all candidates receive adaptive alpine scorecards regardless of being on snowboard or alpine skis until adaptive snowboard-specific forms are finalized.",
+        "documents": [
+          {
+            "name": "PSIA-AASI Adaptive Certification Standards, Performance Guides & Assessment Forms",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "NRM Adaptive Exam Required Information (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1efYr3rVW17LhDDuOKA2D1n21hHcoINs8&export=download"
+          },
+          {
+            "name": "NRM Adaptive Common Clinics List (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1ihOrkSQb9EHf5v9fHptqnWclov9wZ_h2&export=view"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Three-Track E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-three-track/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Four-Track E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-four-track/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Bi-Ski E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-bi-ski/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Mono-Ski E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-mono-ski/"
+          },
+          {
+            "name": "PSIA-RM Adaptive Alpine Education Materials (free)",
+            "url": "https://www.psia-rm.org/adaptive-alpine/adaptive-alpine-education-materials/"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/professional-knowledge-exams/",
+        "exam_note": "The correct online professional knowledge exam module must be completed a minimum of 72 hours prior to the on-snow assessment (expect it to take a couple of hours)."
+      },
+      {
+        "name": "Level III",
+        "slug": "level-iii",
+        "description": "Advanced adaptive certification.",
+        "prerequisites": "Adaptive Level II certification\nMinimum of Alpine Level 2 or Snowboard Level 2 certification (required prior to a Level 3 Adaptive assessment)",
+        "modules": "Assessed per the PSIA-AASI Adaptive Certification Standards: People Skills, Teaching Skills, and the adaptive module being assessed (Adaptive Alpine or Adaptive Snowboard pathway).\nNote: all candidates receive adaptive alpine scorecards regardless of being on snowboard or alpine skis until adaptive snowboard-specific forms are finalized.",
+        "documents": [
+          {
+            "name": "PSIA-AASI Adaptive Certification Standards, Performance Guides & Assessment Forms",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          },
+          {
+            "name": "NRM Adaptive Exam Required Information (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1efYr3rVW17LhDDuOKA2D1n21hHcoINs8&export=download"
+          },
+          {
+            "name": "NRM Adaptive Common Clinics List (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1ihOrkSQb9EHf5v9fHptqnWclov9wZ_h2&export=view"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Three-Track E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-three-track/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Four-Track E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-four-track/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Bi-Ski E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-bi-ski/"
+          },
+          {
+            "name": "Teaching Adaptive Snowsports – Beginner Mono-Ski E-Learning Course (free)",
+            "url": "https://lms.thesnowpros.org/product/teaching-adaptive-snowsports-beginner-mono-ski/"
+          },
+          {
+            "name": "PSIA-RM Adaptive Alpine Education Materials (free)",
+            "url": "https://www.psia-rm.org/adaptive-alpine/adaptive-alpine-education-materials/"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/professional-knowledge-exams/",
+        "exam_note": "The correct online professional knowledge exam module must be completed a minimum of 72 hours prior to the on-snow assessment (expect it to take a couple of hours)."
+      }
+    ]
+  },
+  "childrens-specialist": {
+    "nrm_national_standards_url": "https://thesnowpros.org/wp-content/uploads/2025/01/PSIA_Children-Specialist_Cert_Standards_1022_v1.pdf",
+    "nrm_cert_levels": [
+      {
+        "name": "CS1",
+        "slug": "cs1",
+        "description": "Children's Specialist 1. One-day on-snow clinic and assessment. Focus on children's learning styles, safety, and age-appropriate progressions.",
+        "prerequisites": "PSIA-AASI Level I certification in any discipline\nComplete the online CS1 e-learning course a minimum of 48 hours prior to the on-snow clinic",
+        "modules": "On-snow teaching demonstration\nChildren's safety awareness\nAge-appropriate lesson planning\n\nMulti-disciplinary event (cross country CS events are held separately due to terrain requirements).\nMust be an active participant and receive a passing score on demonstrated knowledge, understanding, teaching, and movement analysis.",
+        "documents": [
+          {
+            "name": "PSIA-AASI Children's Specialist Certification Standards (PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/PSIA_Children-Specialist_Cert_Standards_1022_v1.pdf"
+          },
+          {
+            "name": "Children's Specialist Performance Guide (Nov 2023 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Child-Specialist_Perf-Guide_Nov202311.pdf"
+          },
+          {
+            "name": "CS1 E-Learning Course (required 48 hours before the clinic)",
+            "url": "https://lms.thesnowpros.org/product/childrens-specialist-1-e-learning-course-national/"
+          },
+          {
+            "name": "Introduction to Working with Children E-Learning Course",
+            "url": "https://lms.thesnowpros.org/product/introduction-to-working-with-children/"
+          },
+          {
+            "name": "CS1 Study Guide Questions (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1GnxwMxgHp8f6Lho12ufG5GJaLUtZOeVT&export=download"
+          },
+          {
+            "name": "CS1 Cross Country Study Guide",
+            "url": "https://lms.thesnowpros.org/courses/cross-country-childrens-specialist-level-1-study-guide/"
+          },
+          {
+            "name": "CS1 Teaching Log (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1gkTPDLBTl2iPOj21gTHb-UFlsr9u5KsF&export=download"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/product/childrens-specialist-1-e-learning-course-national/",
+        "exam_note": "The online CS1 course must be completed a minimum of 48 hours prior to attending the CS1 on-snow clinic."
+      },
+      {
+        "name": "CS2",
+        "slug": "cs2",
+        "description": "Children's Specialist 2. Advanced children's teaching certificate building on CS1 foundations.",
+        "prerequisites": "Children's Specialist 1 certificate\nPSIA-AASI Level II certification in any discipline (Adaptive, Alpine, Cross Country, Snowboard or Telemark)\nComplete the CS2 workbook and quiz a minimum of 48 hours prior to the on-snow clinic",
+        "modules": "Advanced children's pedagogy\nDevelopmental stage adaptation\nProgram design\n\nMulti-disciplinary event (cross country CS events are held separately due to terrain requirements).\nParticipants demonstrate integration of the CAP model with movement analysis and teaching activities for children in the Intermediate and Advanced Zones, plus people skills with students and parents/guardians.",
+        "documents": [
+          {
+            "name": "PSIA-AASI Children's Specialist Certification Standards (PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/PSIA_Children-Specialist_Cert_Standards_1022_v1.pdf"
+          },
+          {
+            "name": "Children's Specialist Performance Guide (Nov 2023 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Child-Specialist_Perf-Guide_Nov202311.pdf"
+          },
+          {
+            "name": "CS2 Workbook and Quiz (required 48 hours before the clinic)",
+            "url": "https://lms.thesnowpros.org/courses/childrens-specialist-2-workbook-and-quiz/"
+          }
+        ],
+        "exam_url": "https://lms.thesnowpros.org/courses/childrens-specialist-2-workbook-and-quiz/",
+        "exam_note": "The CS2 workbook and quiz must be completed a minimum of 48 hours prior to attending the on-snow clinic."
+      }
+    ]
+  },
+  "freestyle-specialist": {
+    "nrm_national_standards_url": "https://thesnowpros.org/wp-content/uploads/2025/01/Freestyle-Specialist-Cert-Standards-10.23.pdf",
+    "nrm_cert_levels": [
+      {
+        "name": "FS1",
+        "slug": "fs1",
+        "description": "Freestyle Specialist 1. Entry-level freestyle certification.",
+        "prerequisites": "PSIA-AASI Level I certification in any discipline (recommended before taking FS1)\nComplete the Freestyle Track e-learning module for your primary discipline (Skiing or Snowboarding) at least 48 hours before the on-snow clinic",
+        "modules": "Terrain park safety and etiquette\nBasic freestyle teaching progression\nDemonstration of fundamental freestyle skills\n\nMulti-disciplinary course including a written workbook, skiing/riding and teaching scenarios, and technical discussion.\nMust be an active participant and receive a passing score on demonstrated knowledge, understanding, teaching, movement analysis, and on-snow performance.",
+        "documents": [
+          {
+            "name": "PSIA-AASI Freestyle Specialist Certification Standards (Oct 2023 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Freestyle-Specialist-Cert-Standards-10.23.pdf"
+          },
+          {
+            "name": "PSIA-AASI Freestyle Specialist Performance Guide (Nov 2022 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Frestyle-Specialist-Performance-Guide-Nov2022_2-2.pdf"
+          },
+          {
+            "name": "PSIA Freestyle E-Learning Course – Skiing Track (required 48 hours before the clinic)",
+            "url": "https://lms.thesnowpros.org/product/freestyle-skiing-track-e-learning-course-1-"
+          },
+          {
+            "name": "AASI Freestyle E-Learning Course – Snowboarding Track (required 48 hours before the clinic)",
+            "url": "https://lms.thesnowpros.org/product/freestyle-snowboarding-track/"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": "Complete the Freestyle Track e-learning module for your primary discipline (Skiing or Snowboarding — see Documents) at least 48 hours before the on-snow clinic."
+      },
+      {
+        "name": "FS2",
+        "slug": "fs2",
+        "description": "Freestyle Specialist 2. Intermediate freestyle certification.",
+        "prerequisites": "Freestyle Specialist 1\nPass the FS2 online test with a score of 80% or higher at least 48 hours prior to the on-snow event\nComplete the NRM FS2 Workbook for discussion on the first morning of the on-snow event",
+        "modules": "Advanced terrain park instruction\nFeature progression design\nRisk management\n\nIncludes a written workbook, skiing/riding and teaching scenarios, and technical discussion on progression through intermediate freestyle zones (ATML model and Smart Style integration).",
+        "documents": [
+          {
+            "name": "PSIA-AASI Freestyle Specialist Certification Standards (Oct 2023 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Freestyle-Specialist-Cert-Standards-10.23.pdf"
+          },
+          {
+            "name": "PSIA-AASI Freestyle Specialist Performance Guide (Nov 2022 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Frestyle-Specialist-Performance-Guide-Nov2022_2-2.pdf"
+          },
+          {
+            "name": "NRM FS2 Workbook (Google Drive)",
+            "url": "https://drive.google.com/uc?id=1rKs8y6r2bhTuBLPmrSW3UpuApQhtw2V_&export=download"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": "FS2 online test must be passed with a score of 80% or higher at least 48 hours prior to the on-snow event."
+      },
+      {
+        "name": "FS3",
+        "slug": "fs3",
+        "description": "Freestyle Specialist 3. Advanced freestyle certification.",
+        "prerequisites": "Freestyle Specialist 2\nComplete the NRM FS3 Workbook",
+        "modules": "Expert-level freestyle instruction\nProgram development\nCoaching methodology",
+        "documents": [
+          {
+            "name": "PSIA-AASI Freestyle Specialist Certification Standards (Oct 2023 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Freestyle-Specialist-Cert-Standards-10.23.pdf"
+          },
+          {
+            "name": "PSIA-AASI Freestyle Specialist Performance Guide (Nov 2022 PDF)",
+            "url": "https://thesnowpros.org/wp-content/uploads/2025/01/Frestyle-Specialist-Performance-Guide-Nov2022_2-2.pdf"
+          },
+          {
+            "name": "NRM FS3 Workbook (Google Drive)",
+            "url": "https://drive.google.com/uc?id=12IaZ0fKasfB8l1GsHqiCQpW-RIkoIYW-&export=download"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      }
+    ]
+  },
+  "senior-teaching-specialty": {
+    "nrm_cert_levels": [
+      {
+        "name": "Senior Teaching Certificate 1",
+        "slug": "stc1",
+        "description": "Foundation in senior-specific teaching methods, movement patterns, and engagement strategies for older adult learners. Two-day educational course with an assessment component (a certificate program, not a certification exam).",
+        "prerequisites": "PSIA-AASI Level I certification or higher, in any discipline\nMandatory workbook must be returned to the NRM region office at least two weeks prior to the event (also bring a copy to the clinic)",
+        "modules": "Senior-specific movement analysis\nAdapting lessons for older adults\nSafety and motivation\n\nCovers principles of the senior-specific models, teaching cycle, theories, and professional knowledge; identification of critical skills and skill blending, including senior-specific movement pattern techniques.\nCertificate awarded based on degree of participation and understanding (knowledge, comprehension, application, analysis).",
+        "documents": [
+          {
+            "name": "Senior Teaching Manual (Google Drive; contains the Senior Teaching Standard in its appendix)",
+            "url": "https://drive.google.com/uc?id=1DgMWjzNG4S3RwJrmPT4ESmcUL3LXHYS0&export=download"
+          },
+          {
+            "name": "Senior Teaching Certificate 1 Workbook (Google Drive; mandatory, due two weeks before the event)",
+            "url": "https://drive.google.com/uc?id=1wSKAdq8Ko27lYGzB4Azxi1i4Uvj2DbRG&export=download"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      },
+      {
+        "name": "Senior Teaching Certificate 2",
+        "slug": "stc2",
+        "description": "Advanced senior-specific teaching certificate building on STC1. Two-day educational course with an assessment component; may not be offered every season if demand is low.",
+        "prerequisites": "PSIA-AASI Level II certification or higher, in any discipline\nMandatory STC2 workbook must be returned to the NRM region office at least two weeks prior to the event (also bring a copy to the clinic)",
+        "modules": "Senior-specific models, teaching cycle, theories, and professional knowledge at STC2 depth\nParticipants are held to STC2 standards plus the criteria of all preceding levels (per Bloom's Taxonomy levels of understanding in the Senior Teaching Standard)\nWritten feedback and suggested personal goals for continued growth",
+        "documents": [
+          {
+            "name": "Senior Teaching Manual (Google Drive; contains the Senior Teaching Standard in its appendix)",
+            "url": "https://drive.google.com/uc?id=1DgMWjzNG4S3RwJrmPT4ESmcUL3LXHYS0&export=download"
+          },
+          {
+            "name": "Senior Teaching Certificate 2 Workbook (Google Drive; mandatory, due two weeks before the event)",
+            "url": "https://drive.google.com/uc?id=1zatQnH6o4yeAyR_FyTvXFLfDPv9mmroF&export=download"
+          },
+          {
+            "name": "PSIA-AASI Certification/Credential Standards",
+            "url": "https://thesnowpros.org/certification/national-certification-standards/"
+          }
+        ],
+        "exam_url": "",
+        "exam_note": ""
+      }
+    ]
+  }
+}

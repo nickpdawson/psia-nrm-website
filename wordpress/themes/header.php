@@ -24,14 +24,16 @@
           <span style="font-size:1.25rem;font-weight:700;">PSIA-NRM</span>
         <?php endif; ?>
       </a>
-      <nav class="header-nav">
-        <a href="<?php echo home_url(); ?>" <?php echo is_front_page() ? 'class="current"' : ''; ?>>Home</a>
-        <a href="<?php echo home_url('/pathway'); ?>">My Pathway</a>
-        <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>">Events & Clinics</a>
-        <a href="<?php echo home_url('/community'); ?>">Community</a>
-        <a href="<?php echo home_url("/resources"); ?>">Resources</a>
-        <a href="<?php echo home_url("/whos-who"); ?>">Who's Who</a>
-      </nav>
+      <?php
+      wp_nav_menu([
+          'theme_location' => 'primary',
+          'container'       => 'nav',
+          'container_class' => 'header-nav',
+          'items_wrap'      => '%3$s',
+          'walker'          => new NRM_Nav_Walker(),
+          'fallback_cb'     => 'nrm_nav_fallback',
+      ]);
+      ?>
     </div>
   </div>
 </header>

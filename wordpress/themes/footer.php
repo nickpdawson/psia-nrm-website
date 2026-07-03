@@ -4,8 +4,8 @@
       <div class="footer-col">
         <p><strong>PSIA-NRM</strong></p>
         <p>Professional Ski Instructors of America<br>American Association of Snowboard Instructors<br>Northern Rocky Mountain Division</p>
-        <p class="mt-2">Serving ~1,200 snow sports professionals across Montana, North Dakota, and South Dakota.</p>
-        <p class="mt-2" style="font-size:0.75rem;">Phone: 406-581-6139</p>
+        <p class="mt-2"><?php echo esc_html(nrm_setting('footer_blurb')); ?></p>
+        <p class="mt-2" style="font-size:0.75rem;">Phone: <?php echo esc_html(nrm_setting('office_phone')); ?></p>
       </div>
       <div class="footer-col">
         <h3>Quick Links</h3>

@@ -1,0 +1,7 @@
+# Only deploy/ and wordpress/ are needed as build context (deploy/Dockerfile)
+*
+!deploy/
+!wordpress/
+wordpress/.env
+wordpress/.env.example
+wordpress/uploads/

@@ -277,3 +277,38 @@ img { max-width: 100%; height: auto; }
 .wp-block-group { margin-bottom: 0; }
 .entry-content > * { margin-bottom: 1.5rem; }
 .entry-content > *:last-child { margin-bottom: 0; }
+
+/* ── Editor content (Gutenberg blocks inside .entry-content) ──
+   Styles core blocks so office staff can edit tables, accordions, and
+   document links in the normal editor and they render on-design. */
+.entry-content h2 { color: var(--psia-teal); font-weight: 700; font-size: 1.25rem; margin-bottom: 1rem; }
+.entry-content h3 { color: var(--psia-teal); font-weight: 700; font-size: 1.05rem; margin-bottom: 0.5rem; }
+.entry-content p { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.7; }
+.entry-content ul, .entry-content ol { font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.9; padding-left: 1.25rem; }
+.entry-content a { color: var(--shield-blue); }
+
+.entry-content table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+.entry-content table thead th,
+.entry-content table thead td { text-align: left; padding: 0.625rem 0.75rem; color: var(--psia-teal); border-bottom: 2px solid var(--border-light); font-weight: 700; }
+.entry-content table tbody td { padding: 0.625rem 0.75rem; border-bottom: 1px solid var(--border-light); }
+.entry-content table tbody tr:last-child td { border-bottom: none; }
+.entry-content .wp-block-table figcaption { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; }
+
+.entry-content details { border-bottom: 1px solid var(--border-light); padding: 0.75rem 0; margin-bottom: 0 !important; }
+.entry-content details:last-of-type { border-bottom: none; }
+.entry-content details > summary { cursor: pointer; font-size: 0.875rem; font-weight: 600; color: var(--slate-text); }
+.entry-content details > *:not(summary) { padding-top: 0.75rem; font-size: 0.875rem; }
+
+/* Document link pill — used via the "Document link" block pattern */
+.entry-content .nrm-doc-link,
+.nrm-doc-link { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem; background: var(--ice); border-radius: 0.5rem; text-decoration: none; color: inherit; margin-bottom: 0.5rem; }
+.nrm-doc-link .nrm-doc-title { font-size: 0.875rem; font-weight: 600; color: var(--psia-teal); }
+.nrm-doc-link .nrm-doc-note { font-size: 0.75rem; color: var(--text-muted); }
+
+/* Deadline badge — used via the "Deadline badge" block pattern */
+.nrm-deadline { display: inline-block; background: rgba(227,22,54,0.1); color: var(--shield-red); font-weight: 600; font-size: 0.8125rem; padding: 0.25rem 0.75rem; border-radius: 0.5rem; margin-bottom: 0.5rem; }
+
+/* Info panel (tinted box) */
+.entry-content .nrm-panel { padding: 1.25rem; background: var(--ice); border-radius: 0.75rem; }
+.entry-content .nrm-panel-teal { padding: 1.25rem; background: var(--psia-teal-light); border-radius: 0.75rem; }
+.entry-content .wp-block-columns { gap: 1rem; }

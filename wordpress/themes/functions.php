@@ -3,6 +3,11 @@
  * PSIA-NRM Theme Functions
  */
 
+require_once get_template_directory() . '/inc/class-nrm-nav-walker.php';
+require_once get_template_directory() . '/inc/customizer.php';
+require_once get_template_directory() . '/inc/block-patterns.php';
+require_once get_template_directory() . '/inc/cert-levels-metabox.php';
+
 function nrm_theme_setup() {
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
@@ -126,6 +131,15 @@ function nrm_register_meta() {
     register_post_meta('page', 'nrm_query_role', ['show_in_rest' => true, 'single' => true, 'type' => 'string']);
     register_post_meta('page', 'nrm_query_discipline', ['show_in_rest' => true, 'single' => true, 'type' => 'string']);
     register_post_meta('page', 'nrm_query_specialty', ['show_in_rest' => true, 'single' => true, 'type' => 'string']);
+
+    // Seed marker — set on every post created by nrm-import.php so the
+    // production purge script can identify and delete prototype data.
+    foreach (['nrm_member', 'nrm_event', 'page'] as $pt) {
+        register_post_meta($pt, '_nrm_seeded', [
+            'show_in_rest' => false, 'single' => true, 'type' => 'integer',
+            'auth_callback' => function () { return current_user_can('manage_options'); },
+        ]);
+    }
 }
 add_action('init', 'nrm_register_meta');
 
@@ -289,3 +303,5 @@ function nrm_dashboard_widgets() {
     });
 }
 add_action('wp_dashboard_setup', 'nrm_dashboard_widgets');
+
+// ── Discipline Page Meta ── (moved to inc/cert-levels-metabox.php)

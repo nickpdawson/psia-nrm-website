@@ -1,0 +1,83 @@
+# PSIA-NRM Website — Action Tracker
+
+**Updated:** June 29, 2026 · **Next review:** Monday, July 6, 2026
+**Send-from address for all NRM email:** **nick@nickdawson.net** (canonical — do not use nd@ / nd+openxpki@ aliases)
+
+**Key stakeholders:** Nick (board, PM — **has board carte blanche on all web + content decisions as of ~Jun 29; decides directly, no board gating**) · Herb Davis (CEO) · Sean Steele (National IT) · Jeff (National, $) · Jill Imsand Chumbley (education) · ~~Jessica Quay~~ (nonresponsive — removed as a blocker; see N6) · Board
+**Status legend:** 🔴 blocked/overdue · 🟡 in progress / due soon · 🟢 done · ⚪ not started
+
+This is the living "who owes what" list. The critical path runs through Sean (National). Items are ordered by what's blocking launch.
+
+---
+
+## 🔴 Open — owed by Sean (National IT)
+
+These are the long poles. All were effectively requested by mid-May; as of his May 22 note they were unstarted.
+
+| # | Item | Detail | Status | Target |
+|---|------|--------|--------|--------|
+| S1 | Hosting/payment agreement | Sean to produce after his meeting with Jeff; "pure passthrough on Azure costs, no admin fees." Hold to ~$40/mo (B2 + burstable MySQL). **Now in Jeff's hands: Herb met Jeff in Lakewood (Jun 15 email); Jeff to send a contract for the joint-server arrangement but went on vacation, back ~Jun 22. Awaiting Jeff's draft.** | 🟡 past due — moving via Jeff | Jun 19 (past) |
+| S2 | New Azure subscription | PSIA-NRM subscription on National's Azure tenant. **✅ Done (Jun 26): Sean created the "PSIA-NRM Subscription" and sent a guest-collaboration invite — "You should have access to the PSIA-NRM Subscription and all resources therein."** | 🟢 done | Jun 26 |
+| S3 | Guest access | Grant guest access on the subscription. **✅ Done (Jun 26): Azure guest invite sent to nd@nickdawson.net (the swap is confirmed — invite went to nd@, cc Herb). ⚠️ Invite in Nick's hands — ACCEPT it (myapplications.microsoft.com, sign in with the invited identity) to activate, then verify resources (S4).** | 🟢 granted — Nick accepting now | Jun 26 |
+| S4 | Provision infra | App Service (**B2 Linux**) + **MySQL Flexible Server** (burstable); clone old site to staging. **✅ VERIFIED in the Azure portal Jun 29:** infra is provisioned in RG `PSIA-NRM` (Canada Central) — App Service `PSIA-NRM-Website` on a **B2 Linux** plan (✅ right-sized), MySQL Flexible Server `psia-nrm-website-server` (private endpoint), VNet + private DNS. App Service is **container** publishing model still on the default placeholder image (empty shell, ready for the WordPress app). Full details in `deploy/HANDOFF-Fable.md`. | 🟢 provisioned | ✓ |
+| S7 | ⚠️ Downsize the MySQL SKU | DB was provisioned as **General Purpose D2ds_v4 (2 vCores, 8 GiB) ≈ $130–190/mo** — this is what breaks the ~$40/mo target. Ask Sean to move it to a **Burstable B1ms/B2s (~$15–35/mo)** — plenty for this site. Do it **before** data is loaded. (App Service B2 is fine.) | 🔴 cost fix needed | Before deploy |
+| S5 | OAuth client | `client_id` + `client_secret` (out-of-band), confirm redirect URIs, `authorization_code`+PKCE, scopes `openid PSIA`. Full spec in `migration/psia-oauth-registration-request.md`. **No client_id/secret received yet — still owed (Nick should send the OAuth registration request, N1, now that the tenant relationship is live).** | 🔴 unstarted | Jun 26 |
+| S6 | DNS / domain hosting | Decide GoDaddy (National) vs. Network Solutions; plan record switchover | ⚪ not started | Phase 7 |
+
+## 🟡 Open — owed by Herb (NRM CEO)
+
+| # | Item | Detail | Status | Target |
+|---|------|--------|--------|--------|
+| H1 | Close cost with Jeff | Herb said "I'll take care of negotiating with Jeff on $." Needs to happen in parallel with Sean's setup, not after. **✅ Movement (Jun 15): Herb met Jeff in Lakewood re: a contract for the joint-server arrangement. Jeff said he'd send something but left on vacation; expected back ~Jun 22. Now waiting on Jeff to deliver the contract — Herb flagged hope it "doesn't hold things up."** | 🟡 met — awaiting Jeff's contract | Contract ~post-Jun 22 |
+| H2 | Confirm hosting direction | Align on National-hosted path (vs. his independent-hosting preference). **✅ Confirmed Jun 10: Herb agreed to "stick with the Azure and see how it goes." No longer oscillating.** | 🟢 done | — |
+
+## 🟡 Open — owed by Nick (me)
+
+| # | Item | Detail | Status | Target |
+|---|------|--------|--------|--------|
+| N1 | Send OAuth registration request | Send the drafted request to National now, in parallel with hosting (it may need a security review on their side) | ⚪ ready to send | Jun 12 |
+| N2 | Complete source audit | Fill in `migration/source-audit.md` (SSH to Plesk host + WP admin) — drives content reconciliation | ⚪ not started | Jul 3 |
+| N3 | Deploy to Azure staging | **✅ DONE (Jul 2)** — WordPress live at the `*.azurewebsites.net` staging URL, full import (79/12/29), smoke-tested. Image `psia-nrm-wp:staging-3` in new ACR `psianrmacr`. See `deploy/DEPLOY-staging.md` change-log entry. | 🟢 done | Jul 10 |
+| N4 | Finalize copy & SVG logos | Homepage hero + "Our Mountain" copy (with Jessica/Jill); official NRM logo in SVG | ⚪ not started | Jul 24 |
+| N5 | Wire OAuth login | Implement WP OIDC login once S5 lands | ⚪ blocked by S5 | Jul 17 |
+| N6 | ~~Gather Jessica's website input~~ | **CLOSED — removed as a blocker (Jun 29).** Jessica Quay nonresponsive; Nick has informed other stakeholders and is proceeding without her input. Board carte blanche covers the content calls. Invoice-system details now come from the source audit (N7) + Sean, not from her. | ⚪ closed — not blocking | — |
+| N7 | Audit + decouple the invoice system | Pin down what the ed-staff invoice system is (in source audit), then move it to a stable subdomain on the old host before DNS cutover so launch doesn't break it. Needs Sean (National's host). | 🔴 launch dependency | Before cutover (late Jul) |
+
+## 🟢 Done
+
+| Item | Notes |
+|------|-------|
+| Build WordPress production prototype | Live at `psia-nrm.dzsec.net`; custom theme, CPTs, taxonomies |
+| Import real org data | 79 NRM people, 12 events, 29 schools, dynamic org pages |
+| Map PSIA national API | OAuth/OIDC endpoints, certification/CEU/membership endpoints documented |
+| Board review & approval | Board approved the redesign |
+| Discord community | Created — invite live, wired into homepage/footer |
+| Draft OAuth registration request | `migration/psia-oauth-registration-request.md` |
+
+---
+
+## Scope watch
+
+- **⚠️ Ed-staff invoice system — LAUNCH DEPENDENCY (updated Jun 10).** It lives ON the current website, so cutting over DNS / decommissioning the old Plesk box would **break invoicing**. This is no longer a clean fast-follow. **Plan: decouple before cutover** — move the invoice system to a stable subdomain (e.g. `invoices.psia-nrm.org`) that keeps running on the old host untouched, launch the new site on `psia-nrm.org`, add redirects. The full *revamp* then becomes a scoped fast-follow. **First step: the source audit must pin down exactly what the invoice system is** (plugin/tool, data, DB tables, who uses it) — see `migration/source-audit.md`. Overlaps Jessica (N6) and needs Sean (it's on National's host).
+- **Hosting confirmation (Jun 10).** Minimal/no plugins planned → no need for a powerful server → reinforces the right-sized B2 + burstable MySQL (~$40/mo) we're holding Sean to. National-hosted, reliable, is the goal.
+
+## Escalation triggers
+
+- **If S1 (agreement) or S2–S4 (access) not done by June 30** → escalate independent-hosting fallback with Herb (see PROJECT-PLAN §6). **UPDATE (Jun 29): access side largely cleared — Sean granted the subscription + guest access Jun 26 (S2/S3 done), so the access half of this trigger is essentially met. Only S1 (the cost/agreement via Jeff) remains open. Recommendation: do NOT trigger the independent-hosting fallback — Sean is now actively provisioning. Keep pressure on Jeff's contract instead.**
+- **If any Sean item goes 7+ days past target with no movement** → Herb pings Jeff directly. **(Sean is no longer the blocker — he delivered Jun 26.)**
+
+---
+
+## Change log
+
+- **2026-07-03** (CONTENT-COMPLETE SPRINT — day 1 of ~2wk plan, most of it landed) — Executed the approved migration+editability plan (`~/.claude/plans/lively-mapping-locket.md`). **Staging (`staging-8`) is now content-complete vs. the old site and staff-editable end to end.** (a) **Editability**: Customizer "Site Content" panel (hero/stats/gallery/footer/contact — defaults in code, overrides in DB), nav converted to staff-editable WP menus (seeded idempotently, hardcoded fallback), membership hub rebuilt as editable child pages, discipline cert-levels JSON textarea replaced with a repeater metabox + media picker (fixed unsanitized save), block CSS + NRM patterns; `EDITING-GUIDE.md` written for office staff. (b) **Content**: full old-site crawl (86 pages inventoried) → 36 seeded pages incl. scholarships (Nov 15/Dec 1 deadlines), contact, membership sections w/ CURRENT dues ($157/$182/$112), awards, elections, ADA, staff hub, newsletter+minutes archive; **cert-level data corrected across all 8 disciplines** (89 doc gaps filled incl. Oct 2025 alpine forms, missing Senior Teaching STC2 added, wrong snowboard/adaptive prereqs fixed); 7 old-host PDFs mirrored to `/wp-content/uploads/docs/`; **The Stoke newsletter archive (14 issues) fully mirrored** off the old host; dead .docx minutes re-pointed to Google Drive. Prune list per plan (2016 candidates, COVID post, 2019 recap dropped). (c) **Forms**: native `nrm-forms.php` plugin (contact + 2 scholarship + school grant + member-school + non-PSIA credit @ $12.50/CEU per May 2025 policy), honeypot/nonce/rate-limit, entries CPT + CSV export, verified end-to-end on staging (entry stored + visible in admin); SMTP mu-plugin ready — **needs credentials (Nick: mailbox on hellshalf or transactional provider)**. (d) **Ops**: App Service now pulls from ACR via **managed identity** (root-caused a 503 outage: bare `az webapp config container set` wipes registry creds; twice bitten by a local mDNSResponder DNS wedge killing az mid-pipeline). Remaining from sprint plan: fresh-DB convergence QA, redirect map notes, Customizer live-preview polish pass, SMTP wiring once creds exist. **Board minutes .docx were already dead links on the OLD site** (404s) — worth telling Herb.
+- **2026-07-02** (N3 STAGING DEPLOY ✅) — **WordPress is live on Azure staging**: `https://psia-nrm-website-gvcsgxcxdpaxg0hp.canadacentral-01.azurewebsites.net`. Findings on arrival: Nick's guest identity is a full **Owner** on the subscription (no Sean gating); MySQL is **8.0.21** (no upgrade needed); **VNet integration already enabled**; public network access "Enabled" but zero firewall rules. Executed: created **ACR `psianrmacr`** (Basic, ~$5/mo, registered Microsoft.ContainerRegistry provider); built `psia-nrm-wp:staging-3` via `az acr build` (WP 6.7/PHP 8.3 + theme/plugins/seed data baked in, sshd for App Service SSH, wp-cli); **reset MySQL admin password** (Owner rights — didn't need Sean); created `wp` DB user on Sean's pre-made `psia-nrm-website-database` (charset fixed to utf8mb4); wired app settings (SSL via MYSQLI_CLIENT_SSL, `nrm_` prefix, persistent /home storage for uploads); WP install + full import verified in DB (**79 members / 12 events / 29 schools** + 14 org pages); smoke tests green (front, directory, profile, events, whos-who, school taxonomy, wp-admin login). Two deploy bugs fixed en route: seed JSONs copied with mode 600 (www-data unreadable → chmod in Dockerfile) and unflushed CPT rewrite rules (404s → version-guarded flush in new `nrm-bootstrap.php` mu-plugin, which also auto-activates theme+importer on fresh deploys). Site set to discourage search indexing (staging). Secrets in `deploy/.secrets/mysql.env` (gitignored) — move to 1Password. Remaining: delete temp MySQL firewall rule `temp-ridge-migration` (blocked by a local mDNSResponder DNS wedge at close-out), **S7 downsize MySQL to Burstable now shifts to Sean/Jeff cost conversation** (data reload is trivial — importer is idempotent), OAuth wiring (N5/S5) untouched.
+
+- **2026-06-29** (Azure verify) — Logged into the Azure portal and **verified provisioned infra** (S4 done): B2 Linux App Service (right-sized), MySQL flexible server (private endpoint), VNet. App Service is a container shell on the default placeholder — ready for the WP app. **Found a cost problem: MySQL is General Purpose D2ds_v4 (~$130–190/mo)** → new item S7 to downsize to Burstable before load. Wrote `deploy/HANDOFF-Fable.md` (full env + deploy spec for the coder agent). N3 (deploy to staging) now unblocked.
+- **2026-06-29** (Nick update) — **Board gave Nick carte blanche** on all web + content decisions (decides directly, no board gating). **Jessica removed as a blocker** — nonresponsive; stakeholders informed; N6 closed; invoice details now come from the source audit + Sean. Nick **accepted the Azure invite / logged in**; My Apps portal shows no apps (expected) — next step is verifying provisioned resources in the Azure portal (S4).
+- **2026-06-29** (weekly check) — **🟢 BIG MOVEMENT: Sean delivered Azure access.** On Jun 26 Sean sent an Azure AD guest-collaboration invite (from invites@thesnowpros.org, cc Herb) to **nd@nickdawson.net** with the note: *"You should have access to the PSIA-NRM Subscription and all resources therein."* → **S2 (subscription) and S3 (guest access) marked done**; the nd@ swap is confirmed. **Action for Nick: the invite is still UNREAD — accept it at myapplications.microsoft.com, then verify what infra (S4: App Service B2 + MySQL) is actually provisioned and request the OAuth client (S5).** No Sean nudge needed this week — he came through. **S1 (agreement/$): still open** — Herb met Jeff Jun 15; Jeff was due back ~Jun 22 with a contract draft; nothing seen as of Jun 29 (a Jun 23 "Re: Contract with National" entry was Nick's own Superhuman reminder, not a reply). **Drafted a gentle Herb nudge** (`nudges/03_herb_jeff-contract-followup.md`, do NOT send yet) to check on Jeff's draft. **June 30 gate: access half now met → recommend NOT triggering the independent-hosting fallback; keep pressure on the contract only.** **Jessica (N6): still no conversation** (nothing to/from nrm.memberservices@gmail.com since Apr 9) — ~25 days to the Jul 24 content lock; needs Nick to get it on the calendar this week.
+- **2026-06-22** (weekly check) — **H1/S1 movement: the contract is now with Jeff.** Herb emailed Jun 15 ("Contract with National"): he met Jeff in Lakewood re: a contract for the joint-server arrangement; Jeff said he'd send something but left on vacation, back ~Jun 22 (today). H1 → "met, awaiting Jeff's contract"; S1 → past due but moving via Jeff. **Sean still silent** — no reply to the Jun 8 nudge; S1 (Jun 19) now 3 days past due, S2–S5 due Jun 26. Not yet 7+ days past target, so no Sean nudge drafted this week — but the **June 30 decision gate is now at real risk**: it hinges on Jeff's contract landing + Sean provisioning within ~8 days. **Jessica (N6): still no conversation** (nothing to/from nrm.memberservices@gmail.com since Apr 9) — escalated to 🔴; ~4.5 wks to the Jul 24 content lock, needs to get on the calendar this week.
+- **2026-06-15** (weekly check) — **Herb confirmed hosting direction** (Jun 10 email): "makes sense to stick with the Azure and see how it goes" → H2 marked done; National-hosted path locked. Herb asked about plugins; Nick replied (minimal/none → right-sized server). **Sean still silent** — no reply to the Jun 8 nudge; S1 (Jun 19) and S2–S5 (Jun 26) not yet past due, so no escalation/nudge triggered yet. June 30 decision gate intact. **H1 (Herb→Jeff $ close) still owed** — Herb is at Denver meetings and the NRM board meeting is Jun 17–18, the natural venue to close it. **Jessica (N6): no conversation yet** — last website contact was Apr 9; flag to schedule before the Jul 24 content lock.
+- **2026-06-10** — New scope item from Herb: revamp ed-staff invoice system (logged under Scope watch — recommend post-launch fast-follow). Hosting direction confirmed: minimal plugins → right-sized National server. Herb re-engaged, pinging Sean alongside Nick.
+- **2026-06-08** — Nudge emails sent: to Sean (cc Herb) on the "Introductions from NRM" thread asking for the agreement, Azure subscription + access (nd@nickdawson.net), B2 + MySQL infra, and OAuth client_id/secret by Jun 26; to Herb on the "NRM site" thread asking him to close the $/agreement with Jeff by ~Jun 12.
+- **2026-06-08** — Tracker created. National-hosted path confirmed as primary; summer launch (~Aug 3) targeted.

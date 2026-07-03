@@ -56,7 +56,12 @@ while (have_posts()): the_post();
       <span><?php the_title(); ?></span>
     </nav>
     <div class="flex items-center" style="gap:1.5rem;">
-      <div class="member-avatar member-avatar-lg" style="border:2px solid rgba(255,255,255,0.3);"><?php echo esc_html($initials); ?></div>
+      <?php if ($photo): ?>
+        <img src="<?php echo home_url($photo); ?>" alt="<?php the_title(); ?>"
+             style="width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid rgba(255,255,255,0.3);flex-shrink:0;">
+      <?php else: ?>
+        <div class="member-avatar member-avatar-lg" style="border:2px solid rgba(255,255,255,0.3);"><?php echo esc_html($initials); ?></div>
+      <?php endif; ?>
       <div>
         <h1 style="font-size:2rem;font-weight:700;margin:0;"><?php the_title(); ?></h1>
         <?php if ($display_title): ?>
@@ -207,7 +212,12 @@ while (have_posts()): the_post();
         <?php if ($how_to_book): ?>
           <div class="card mb-4" style="background:var(--ice);">
             <h3 class="text-teal font-bold text-sm mb-2">How to Book a Lesson</h3>
-            <p class="text-sm"><?php echo nl2br(esc_html($how_to_book)); ?></p>
+            <?php
+              $book_text = $how_to_book;
+              // Auto-link URLs in the booking text
+              $book_text = preg_replace('/(https?:\/\/[^\s<]+)/', '<a href="$1" target="_blank" rel="noopener" style="color:var(--shield-blue);">$1</a>', esc_html($book_text));
+              echo nl2br($book_text);
+            ?>
           </div>
         <?php endif; ?>
 

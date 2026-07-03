@@ -59,6 +59,10 @@ function nrm_maybe_import_data() {
 
         if (is_wp_error($post_id)) continue;
 
+        // Tag every seeded post so the production purge script can identify
+        // and delete prototype data before launch.
+        update_post_meta($post_id, '_nrm_seeded', 1);
+
         // Meta fields
         if (!empty($p['email'])) update_post_meta($post_id, 'nrm_email', $p['email']);
         if (!empty($p['bio'])) update_post_meta($post_id, 'nrm_bio', $p['bio']);
@@ -87,6 +91,7 @@ function nrm_maybe_import_data() {
                     'post_content' => $e['description'] ?? '',
                 ]);
                 if (!is_wp_error($post_id)) {
+                    update_post_meta($post_id, '_nrm_seeded', 1);
                     update_post_meta($post_id, 'nrm_event_start', $e['date'] ?? '');
                     update_post_meta($post_id, 'nrm_event_end', $e['endDate'] ?? '');
                     update_post_meta($post_id, 'nrm_event_location', $e['location'] ?? '');
@@ -109,6 +114,9 @@ function nrm_maybe_import_data() {
         'post_name' => 'whos-who', 'post_status' => 'publish',
         'post_content' => '<p>Meet the people who make PSIA-NRM run — from the board of directors to education teams across every discipline.</p>',
     ]);
+    if (!is_wp_error($parent_page)) {
+        update_post_meta($parent_page, '_nrm_seeded', 1);
+    }
 
     $sub_pages = [
         ['title' => 'Board of Directors', 'slug' => 'board-of-directors', 'role' => 'Board Member', 'disc' => '', 'spec' => '',
@@ -144,6 +152,7 @@ function nrm_maybe_import_data() {
             'post_parent' => $parent_page, 'post_content' => '<p>'.$sp['content'].'</p>',
         ]);
         if (!is_wp_error($pid)) {
+            update_post_meta($pid, '_nrm_seeded', 1);
             if ($sp['role']) update_post_meta($pid, 'nrm_query_role', $sp['role']);
             if ($sp['disc']) update_post_meta($pid, 'nrm_query_discipline', $sp['disc']);
             if ($sp['spec']) update_post_meta($pid, 'nrm_query_specialty', $sp['spec']);
@@ -153,3 +162,118 @@ function nrm_maybe_import_data() {
     update_option('nrm_data_v2_imported', true);
 }
 add_action('admin_init', 'nrm_maybe_import_data');
+
+// ── Content pages (disciplines, membership, pathway, …) ──
+// Exported from the prototype (wordpress/pages.json). Runs after the main
+// import so parent lookups (e.g. whos-who) resolve. Idempotent per slug.
+function nrm_maybe_import_pages() {
+    if (!get_option('nrm_data_v2_imported')) return; // main import first
+
+    $json = file_get_contents('/var/www/pages.json');
+    if (!$json) { error_log('NRM Import: pages.json not found'); return; }
+    $pages = json_decode($json, true);
+    if (!is_array($pages)) { error_log('NRM Import: pages.json invalid'); return; }
+
+    // Re-run whenever the seed file changes (new pages added by a deploy);
+    // existing pages are never touched — staff edits win.
+    $sig = md5($json);
+    if (get_option('nrm_pages_seed_sig') === $sig) return;
+
+    foreach ($pages as $pg) {
+        $parent_id = 0;
+        if (!empty($pg['parent'])) {
+            $parent = get_page_by_path($pg['parent']);
+            if ($parent) $parent_id = $parent->ID;
+        }
+        $path = ($parent_id ? $pg['parent'] . '/' : '') . $pg['slug'];
+        if (get_page_by_path($path)) continue; // already exists
+
+        $pid = wp_insert_post([
+            'post_type' => 'page', 'post_title' => $pg['title'],
+            'post_name' => $pg['slug'], 'post_status' => 'publish',
+            'post_parent' => $parent_id, 'post_content' => $pg['content'],
+        ]);
+        if (is_wp_error($pid)) continue;
+        update_post_meta($pid, '_nrm_seeded', 1);
+        foreach (($pg['meta'] ?? []) as $k => $v) {
+            update_post_meta($pid, $k, $v);
+        }
+    }
+
+    update_option('nrm_pages_seed_sig', $sig);
+    update_option('nrm_pages_v1_imported', true); // kept for menu-seed ordering
+}
+add_action('admin_init', 'nrm_maybe_import_pages');
+
+// ── Certification-level data updates ──
+// Curated corrections to discipline pages' nrm_cert_levels meta
+// (wordpress/cert-updates.json). Applied whenever the file changes.
+// NOTE: this REPLACES the meta wholesale — it is the source of truth until
+// staff take over editing via the Discipline Page Settings box; after that,
+// ship an empty {} to stop overwriting.
+function nrm_maybe_apply_cert_updates() {
+    $json = @file_get_contents('/var/www/cert-updates.json');
+    if (!$json) return;
+    $updates = json_decode($json, true);
+    if (!is_array($updates) || !$updates) return;
+
+    $sig = md5($json);
+    if (get_option('nrm_cert_updates_sig') === $sig) return;
+
+    foreach ($updates as $slug => $meta) {
+        $page = get_page_by_path($slug);
+        if (!$page) continue;
+        if (isset($meta['nrm_cert_levels'])) {
+            update_post_meta($page->ID, 'nrm_cert_levels', wp_json_encode($meta['nrm_cert_levels'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+        }
+        if (!empty($meta['nrm_national_standards_url'])) {
+            update_post_meta($page->ID, 'nrm_national_standards_url', esc_url_raw($meta['nrm_national_standards_url']));
+        }
+    }
+    update_option('nrm_cert_updates_sig', $sig);
+}
+add_action('admin_init', 'nrm_maybe_apply_cert_updates');
+
+// ── Primary nav menu ──
+// Seeds a real, staff-editable menu (Appearance → Menus) matching the theme's
+// hardcoded fallback, and assigns it to the 'primary' location. One-time.
+function nrm_maybe_seed_menu() {
+    if (get_option('nrm_menu_v1_seeded')) return;
+    if (!get_option('nrm_pages_v1_imported')) return; // pages must exist for links
+
+    $menu_name = 'Primary';
+    $menu = wp_get_nav_menu_object($menu_name);
+    if (!$menu) {
+        $menu_id = wp_create_nav_menu($menu_name);
+        if (is_wp_error($menu_id)) return;
+
+        $items = [
+            ['title' => 'Home',             'url' => home_url('/')],
+            ['title' => 'My Profile',       'url' => home_url('/pathway/')],
+            ['title' => 'Events & Clinics', 'url' => get_post_type_archive_link('nrm_event')],
+            ['title' => 'Disciplines',      'url' => home_url('/disciplines/')],
+            ['title' => 'Membership',       'url' => home_url('/membership/')],
+            ['title' => 'Scholarships',     'url' => home_url('/scholarships/')],
+            ['title' => "Who's Who",        'url' => home_url('/whos-who/')],
+        ];
+        foreach ($items as $i => $item) {
+            wp_update_nav_menu_item($menu_id, 0, [
+                'menu-item-title'  => $item['title'],
+                'menu-item-url'    => $item['url'],
+                'menu-item-status' => 'publish',
+                'menu-item-position' => $i + 1,
+            ]);
+        }
+    } else {
+        $menu_id = $menu->term_id;
+    }
+
+    $locations = get_theme_mod('nav_menu_locations', []);
+    if (empty($locations['primary'])) {
+        $locations['primary'] = $menu_id;
+        set_theme_mod('nav_menu_locations', $locations);
+    }
+
+    update_option('nrm_menu_v1_seeded', true);
+}
+add_action('admin_init', 'nrm_maybe_seed_menu');

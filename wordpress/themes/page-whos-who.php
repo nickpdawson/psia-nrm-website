@@ -57,7 +57,7 @@ get_header(); ?>
 
     <h2 class="section-title">Member Schools</h2>
     <div class="card" style="margin-bottom:2rem;">
-      <p class="text-secondary text-sm mb-4">NRM member schools across Montana, Wyoming, North Dakota, South Dakota, and Idaho.</p>
+      <p class="text-secondary text-sm mb-4">NRM member schools across Montana, Wyoming, North Dakota, and South Dakota.</p>
       <div class="card-grid card-grid-3">
         <?php
         $schools = get_terms(['taxonomy' => 'nrm_school', 'orderby' => 'name', 'hide_empty' => false]);

@@ -1,19 +1,32 @@
 <?php get_header(); ?>
 
-<!-- Hero -->
-<section class="hero">
-  <div class="container">
+<!-- Hero with background image -->
+<section style="position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center;">
+  <div style="position:absolute;inset:0;">
+    <img src="<?php echo esc_url(nrm_hero_image_url()); ?>"
+         alt="Skier in Montana powder"
+         style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(3,83,104,0.88) 0%, rgba(4,89,150,0.82) 50%, rgba(3,83,104,0.88) 100%);"></div>
+  </div>
+  <div class="container" style="position:relative;z-index:1;padding-top:3rem;padding-bottom:3rem;">
     <div style="max-width:720px;">
-      <h1>Your journey.<br>Your career.<br>Our community.</h1>
-      <p>PSIA-AASI Northern Rocky Mountain supports professional snow sports instructors across Montana, North Dakota, and South Dakota — helping you grow your career, connect with peers, and share the stoke.</p>
+      <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.02em;color:white;">
+        <?php echo nl2br(esc_html(nrm_setting('hero_heading'))); ?>
+      </h1>
+      <p style="font-size:1.25rem;color:rgba(255,255,255,0.85);max-width:600px;line-height:1.6;">
+        <?php echo esc_html(nrm_setting('hero_text')); ?>
+      </p>
       <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
-        <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>" class="btn btn-primary">Find Your Next Clinic &rarr;</a>
-        <a href="<?php echo home_url('/resources'); ?>" class="btn btn-secondary">New Member Guide</a>
+        <a href="<?php echo esc_url(nrm_setting('hero_cta1_url')); ?>" class="btn btn-primary"><?php echo esc_html(nrm_setting('hero_cta1_label')); ?></a>
+        <a href="<?php echo esc_url(nrm_setting('hero_cta2_url')); ?>" class="btn btn-secondary"><?php echo esc_html(nrm_setting('hero_cta2_label')); ?></a>
       </div>
-      <div class="stats">
-        <div><div class="stat-number">1,200+</div><div class="stat-label">Members</div></div>
-        <div><div class="stat-number">20</div><div class="stat-label">Member Schools</div></div>
-        <div><div class="stat-number">12+</div><div class="stat-label">Events This Season</div></div>
+      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:1.5rem;margin-top:3rem;max-width:400px;">
+        <?php foreach ([1, 2, 3] as $n): ?>
+        <div>
+          <div style="font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;color:white;"><?php echo esc_html(nrm_setting("stat{$n}_number")); ?></div>
+          <div style="font-size:0.875rem;color:rgba(255,255,255,0.6);"><?php echo esc_html(nrm_setting("stat{$n}_label")); ?></div>
+        </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </div>
@@ -27,26 +40,42 @@
       <h3 class="text-teal font-bold mb-2">Register for a Clinic</h3>
       <p class="text-secondary text-sm">Find and sign up for upcoming clinics, prep courses, and assessments</p>
     </a>
-    <a href="<?php echo home_url('/pathway'); ?>" class="card" style="text-decoration:none;color:inherit;">
+    <a href="<?php echo home_url('/disciplines/'); ?>" class="card" style="text-decoration:none;color:inherit;">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">📚</div>
       <h3 class="text-teal font-bold mb-2">Exam Prep Materials</h3>
-      <p class="text-secondary text-sm">Access digital manuals, study guides, and certification standards</p>
+      <p class="text-secondary text-sm">Access certification standards, assessment forms, and prep outlines by discipline</p>
     </a>
     <a href="https://discord.gg/khuz6TYKX3" target="_blank" rel="noopener" class="card" style="text-decoration:none;color:inherit;">
       <div style="font-size:1.5rem;margin-bottom:0.75rem;">💬</div>
       <h3 class="text-teal font-bold mb-2">Join the Community</h3>
       <p class="text-secondary text-sm">Connect with fellow instructors on Discord — study groups, gear exchange, and more</p>
     </a>
-    <a href="<?php echo home_url('/resources'); ?>" class="card" style="text-decoration:none;color:inherit;">
-      <div style="font-size:1.5rem;margin-bottom:0.75rem;">🎓</div>
-      <h3 class="text-teal font-bold mb-2">Scholarships</h3>
-      <p class="text-secondary text-sm">Individual applications due Nov 15. School grants due Dec 1.</p>
+    <a href="<?php echo home_url('/whos-who/'); ?>" class="card" style="text-decoration:none;color:inherit;">
+      <div style="font-size:1.5rem;margin-bottom:0.75rem;">👥</div>
+      <h3 class="text-teal font-bold mb-2">Who's Who</h3>
+      <p class="text-secondary text-sm">Meet the board, education teams, discipline chairs, and office staff</p>
     </a>
   </div>
 </section>
 
+<!-- Community Photo Gallery -->
+<section style="margin-bottom:3rem;">
+  <div class="container">
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <?php foreach (nrm_gallery_images() as $img): ?>
+        <div style="width:180px;height:180px;border-radius:1rem;overflow:hidden;flex-shrink:0;">
+          <img src="<?php echo esc_url($img['src']); ?>"
+               alt="<?php echo esc_attr($img['alt']); ?>"
+               style="width:100%;height:100%;object-fit:cover;object-position:<?php echo esc_attr($img['pos']); ?>;">
+        </div>
+      <?php endforeach; ?>
+    </div>
+    <p style="text-align:center;margin-top:0.75rem;font-size:0.75rem;color:var(--text-muted);">Real NRM instructors across the region</p>
+  </div>
+</section>
+
 <!-- Upcoming Events -->
-<section class="section">
+<section class="section" style="padding-top:0;">
   <div class="container">
     <div class="flex items-center justify-between mb-4">
       <h2 class="section-title" style="margin-bottom:0;">Upcoming Events</h2>
@@ -76,15 +105,14 @@
           <div class="day"><?php echo $start ? date('j', strtotime($start)) : ''; ?></div>
         </div>
         <div class="event-content">
-          <?php if ($disciplines): foreach ($disciplines as $d): ?>
+          <?php if ($disciplines && !is_wp_error($disciplines)): foreach ($disciplines as $d): ?>
             <span class="badge badge-teal"><?php echo esc_html($d->name); ?></span>
           <?php endforeach; endif; ?>
-          <?php if ($types): foreach ($types as $t): ?>
+          <?php if ($types && !is_wp_error($types)): foreach ($types as $t): ?>
             <span class="badge" style="background:#EBF8FF;color:#2B6CB0;"><?php echo esc_html($t->name); ?></span>
           <?php endforeach; endif; ?>
           <h3 style="margin-top:0.5rem;"><?php the_title(); ?></h3>
           <p class="text-muted text-sm">📍 <?php echo esc_html($location); ?></p>
-          <p class="text-secondary text-sm mt-1"><?php echo wp_trim_words(get_the_content(), 20); ?></p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-teal font-bold text-sm"><?php echo esc_html($price); ?></span>
             <?php if ($reg_url): ?>
@@ -100,45 +128,38 @@
   </div>
 </section>
 
-<!-- Our Mountain Campaign -->
+<!-- Our Mountain Campaign with image -->
 <section class="section">
   <div class="container">
-    <div class="campaign-banner">
-      <span class="text-xs" style="text-transform:uppercase;letter-spacing:0.05em;opacity:0.6;">Campaign</span>
-      <h2 style="font-size:2rem;font-weight:700;margin:0.5rem 0 1rem;">Our Mountain</h2>
-      <p style="color:rgba(255,255,255,0.8);max-width:640px;margin-bottom:1.5rem;">NRM is building toward a future where every instructor has the resources, community, and pathways to thrive. Our Mountain is built on three pillars.</p>
-      <div class="campaign-pillars">
-        <div class="campaign-pillar">
-          <h3 style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Instructor Excellence</h3>
-          <p style="font-size:0.75rem;opacity:0.7;">World-class education and certification</p>
-        </div>
-        <div class="campaign-pillar">
-          <h3 style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Professional Sustainability</h3>
-          <p style="font-size:0.75rem;opacity:0.7;">Career pathways and livelihood support</p>
-        </div>
-        <div class="campaign-pillar">
-          <h3 style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Universal Access</h3>
-          <p style="font-size:0.75rem;opacity:0.7;">Making snow sports instruction available to all</p>
-        </div>
+    <div class="campaign-banner" style="position:relative;overflow:hidden;">
+      <div style="position:absolute;right:-2rem;bottom:-2rem;width:300px;height:300px;opacity:0.1;">
+        <img src="<?php echo home_url('/wp-content/uploads/images/hero image tall rect.jpeg'); ?>"
+             alt="" style="width:100%;height:100%;object-fit:cover;border-radius:1rem;">
       </div>
-      <a href="<?php echo home_url('/our-mountain'); ?>" class="btn btn-primary">Learn More</a>
+      <div style="position:relative;z-index:1;">
+        <span class="text-xs" style="text-transform:uppercase;letter-spacing:0.05em;opacity:0.6;">Campaign</span>
+        <h2 style="font-size:2rem;font-weight:700;margin:0.5rem 0 1rem;">Our Mountain</h2>
+        <p style="color:rgba(255,255,255,0.8);max-width:640px;margin-bottom:1.5rem;">NRM is building toward a future where every instructor has the resources, community, and pathways to thrive. Our Mountain is built on three pillars.</p>
+        <div class="campaign-pillars">
+          <div class="campaign-pillar">
+            <h3 style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Instructor Excellence</h3>
+            <p style="font-size:0.75rem;opacity:0.7;">World-class education and certification</p>
+          </div>
+          <div class="campaign-pillar">
+            <h3 style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Professional Sustainability</h3>
+            <p style="font-size:0.75rem;opacity:0.7;">Career pathways and livelihood support</p>
+          </div>
+          <div class="campaign-pillar">
+            <h3 style="font-weight:600;font-size:0.875rem;margin-bottom:0.25rem;">Universal Access</h3>
+            <p style="font-size:0.75rem;opacity:0.7;">Making snow sports instruction available to all</p>
+          </div>
+        </div>
+        <a href="<?php echo home_url('/our-mountain'); ?>" class="btn btn-primary" style="margin-top:1rem;">Learn More</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Sponsors -->
-<section class="section" style="padding-top:0;">
-  <div class="container" style="text-align:center;">
-    <p class="text-muted text-xs" style="text-transform:uppercase;letter-spacing:0.05em;margin-bottom:1rem;">Proud Partners & Sponsors</p>
-    <div class="sponsor-bar">
-      <span class="sponsor-item">The North Face</span>
-      <span class="sponsor-item">Rossignol</span>
-      <span class="sponsor-item">Smartwool</span>
-      <span class="sponsor-item">Smith Optics</span>
-      <span class="sponsor-item">Subaru</span>
-      <span class="sponsor-item">Patagonia</span>
-    </div>
-  </div>
-</section>
+
 
 <?php get_footer(); ?>
