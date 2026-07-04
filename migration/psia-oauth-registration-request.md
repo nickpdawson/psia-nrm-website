@@ -1,10 +1,10 @@
 # PSIA OAuth Client Registration Request
 
-Adapt and send to PSIA national IT. Adjust contact name + delivery channel based on who you spoke with.
+Adapt and send to PSIA national IT (Sean). Adjust contact name + delivery channel based on who you spoke with. Updated 2026-07-03: added the live Azure staging redirect URI and the SMTP ask (§7) so all remaining National dependencies land in one request.
 
 ---
 
-**Subject:** OAuth client registration request for psia-nrm.org
+**Subject:** OAuth client registration + website email for psia-nrm.org
 
 We're rebuilding the PSIA-NRM division website (`psia-nrm.org`) and want members and staff to log in with their existing PSIA-AASI credentials via the OIDC endpoint at `api.thesnowpros.org/connect/authorize`. Please register an OAuth/OIDC client for us.
 
@@ -12,9 +12,8 @@ We're rebuilding the PSIA-NRM division website (`psia-nrm.org`) and want members
 
 - `client_id` and `client_secret` (delivered out-of-band, not over email).
 - Confirmation that the following redirect URIs are accepted:
-  - `https://psia-nrm.dzsec.net/wp-login.php?action=psia-oauth-callback` (dev/staging)
-  - `https://new.psia-nrm.org/wp-login.php?action=psia-oauth-callback` (board review staging)
-  - `https://psia-nrm.org/wp-login.php?action=psia-oauth-callback` (production)
+  - `https://psia-nrm-website-gvcsgxcxdpaxg0hp.canadacentral-01.azurewebsites.net/wp-login.php?action=psia-oauth-callback` (Azure staging — the site is already running in the PSIA-NRM subscription Sean provisioned)
+  - `https://psia-nrm.org/wp-login.php?action=psia-oauth-callback` and `https://www.psia-nrm.org/wp-login.php?action=psia-oauth-callback` (production, post-cutover)
   - `http://localhost:8080/wp-login.php?action=psia-oauth-callback` (local dev)
 
 ### 2. Confirm configuration
@@ -50,6 +49,16 @@ We understand the backend is IdentityServer 4. To avoid surprises:
 - Is the `sub` claim (account_id) stable for the lifetime of the member, or can it change on re-registration / membership lapse?
 - Webhook or push notification when a member's certifications/CEUs/membership status changes, or do we re-poll on each login?
 - IP allowlist required for the client backend, or is the secret sufficient?
+
+### 7. Website email (SMTP) — separate small ask
+
+The new site has native contact/scholarship/grant forms that need to send notification email to the office (`info@psia-nrm.org`). We need an SMTP credential the website can send through — any of these works, in order of our preference:
+
+- **Azure Communication Services Email** in the PSIA-NRM subscription (keeps billing in the passthrough, no M365 changes), or
+- an **M365 mailbox / SMTP-auth credential** for `info@psia-nrm.org` (or a dedicated `website@psia-nrm.org`), or
+- an existing **SMTP relay** you already run, with a credential scoped to us.
+
+Whatever the mechanism, we'll need the host/port/username/credential delivered out-of-band, and SPF/DKIM alignment for whatever From-address you assign. Until this lands, form submissions are safely stored in the site's database — nothing is lost — but the office gets no email notification.
 
 ### 6. Process
 

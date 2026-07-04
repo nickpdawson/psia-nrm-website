@@ -4,7 +4,7 @@ $term = get_queried_object();
 <section class="section">
   <div class="container">
     <nav class="text-sm text-muted mb-4">
-      <a href="<?php echo home_url('/schools/'); ?>" style="color:var(--shield-blue);">Member Schools</a>
+      <a href="<?php echo home_url('/whos-who/'); ?>" style="color:var(--shield-blue);">Member Schools</a>
       <span style="margin:0 0.5rem;">/</span>
       <span><?php echo esc_html($term->name); ?></span>
     </nav>

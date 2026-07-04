@@ -74,23 +74,36 @@
   </div>
 </section>
 
-<!-- Upcoming Events -->
+<!-- Upcoming Events (falls back to the most recent events between seasons) -->
+<?php
+$events = new WP_Query([
+  'post_type'      => 'nrm_event',
+  'posts_per_page' => 3,
+  'meta_key'       => 'nrm_event_start',
+  'orderby'        => 'meta_value',
+  'order'          => 'ASC',
+  'meta_query'     => [['key' => 'nrm_event_start', 'value' => date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE']],
+]);
+$events_heading = 'Upcoming Events';
+if (!$events->have_posts()) {
+  $events = new WP_Query([
+    'post_type'      => 'nrm_event',
+    'posts_per_page' => 3,
+    'meta_key'       => 'nrm_event_start',
+    'orderby'        => 'meta_value',
+    'order'          => 'DESC',
+  ]);
+  $events_heading = 'Recent Events';
+}
+?>
 <section class="section" style="padding-top:0;">
   <div class="container">
     <div class="flex items-center justify-between mb-4">
-      <h2 class="section-title" style="margin-bottom:0;">Upcoming Events</h2>
+      <h2 class="section-title" style="margin-bottom:0;"><?php echo esc_html($events_heading); ?></h2>
       <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>" class="text-sm">View full calendar &rarr;</a>
     </div>
     <div class="card-grid card-grid-3">
       <?php
-      $events = new WP_Query([
-        'post_type'      => 'nrm_event',
-        'posts_per_page' => 3,
-        'meta_key'       => 'nrm_event_start',
-        'orderby'        => 'meta_value',
-        'order'          => 'ASC',
-        'meta_query'     => [['key' => 'nrm_event_start', 'value' => date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE']],
-      ]);
       if ($events->have_posts()): while ($events->have_posts()): $events->the_post();
         $start = get_post_meta(get_the_ID(), 'nrm_event_start', true);
         $location = get_post_meta(get_the_ID(), 'nrm_event_location', true);
@@ -115,7 +128,7 @@
           <p class="text-muted text-sm">📍 <?php echo esc_html($location); ?></p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-teal font-bold text-sm"><?php echo esc_html($price); ?></span>
-            <?php if ($reg_url): ?>
+            <?php if ($reg_url && $start && strtotime($start) >= strtotime('today')): ?>
               <a href="<?php echo esc_url($reg_url); ?>" target="_blank" class="btn btn-teal" style="padding:0.375rem 1rem;font-size:0.8125rem;">Register</a>
             <?php endif; ?>
           </div>

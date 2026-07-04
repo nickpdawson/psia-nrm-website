@@ -24,11 +24,19 @@ add_action('init', function () {
     }
 }, 1);
 
-// CPT rewrite rules must be flushed once after the post types exist (they
-// register on init 10); bump the version to force a re-flush on a deploy.
+// Pretty permalinks are required (templates and seeded links assume /slug/
+// paths). WP only auto-enables them when its install-time self-request test
+// succeeds, which fails in containers behind port mappings — so enforce it.
+// Also flush CPT rewrite rules once after the post types exist (they register
+// on init 10); bump the version to force a re-flush on a deploy.
 add_action('init', function () {
     if (!is_blog_installed()) return;
-    if (get_option('nrm_rewrite_flush_v') !== '1') {
+    $needs_flush = false;
+    if (!get_option('permalink_structure')) {
+        update_option('permalink_structure', '/%postname%/');
+        $needs_flush = true;
+    }
+    if ($needs_flush || get_option('nrm_rewrite_flush_v') !== '1') {
         flush_rewrite_rules();
         update_option('nrm_rewrite_flush_v', '1');
     }

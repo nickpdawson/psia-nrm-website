@@ -33,7 +33,7 @@ case "${1:-}" in
     : "${WP_DB_PASSWORD:?set WP_DB_PASSWORD env var first}"
     az webapp config appsettings set -g "$RG" -n "$APP" --settings \
       WORDPRESS_DB_HOST="$DB_HOST" \
-      WORDPRESS_DB_NAME="wordpress" \
+      WORDPRESS_DB_NAME="psia-nrm-website-database" \
       WORDPRESS_DB_USER="${WP_DB_USER:-wp}" \
       WORDPRESS_DB_PASSWORD="$WP_DB_PASSWORD" \
       WORDPRESS_TABLE_PREFIX="nrm_" \
@@ -43,12 +43,12 @@ case "${1:-}" in
       -o none && echo "app settings set (password hidden)"
     ;;
   set-image)
-    CREDS=$(az acr credential show -n "$ACR" --query '{u:username,p:passwords[0].value}' -o tsv)
+    # Pull auth is via the app's managed identity (AcrPull role on the ACR,
+    # acrUseManagedIdentityCreds=true) — do NOT pass registry credentials here;
+    # a bare container-set with creds omitted used to wipe the stored password
+    # and 503 the site. Managed identity has no password to wipe.
     az webapp config container set -g "$RG" -n "$APP" \
-      --container-image-name "$ACR.azurecr.io/$IMAGE:$TAG" \
-      --container-registry-url "https://$ACR.azurecr.io" \
-      --container-registry-user "$(cut -f1 <<<"$CREDS")" \
-      --container-registry-password "$(cut -f2 <<<"$CREDS")" -o none
+      --container-image-name "$ACR.azurecr.io/$IMAGE:$TAG" -o none
     az webapp restart -g "$RG" -n "$APP"
     echo "deployed $IMAGE:$TAG — follow with: $0 logs"
     ;;

@@ -23,6 +23,7 @@ These are the long poles. All were effectively requested by mid-May; as of his M
 | S7 | ⚠️ Downsize the MySQL SKU | DB was provisioned as **General Purpose D2ds_v4 (2 vCores, 8 GiB) ≈ $130–190/mo** — this is what breaks the ~$40/mo target. Ask Sean to move it to a **Burstable B1ms/B2s (~$15–35/mo)** — plenty for this site. Do it **before** data is loaded. (App Service B2 is fine.) | 🔴 cost fix needed | Before deploy |
 | S5 | OAuth client | `client_id` + `client_secret` (out-of-band), confirm redirect URIs, `authorization_code`+PKCE, scopes `openid PSIA`. Full spec in `migration/psia-oauth-registration-request.md`. **No client_id/secret received yet — still owed (Nick should send the OAuth registration request, N1, now that the tenant relationship is live).** | 🔴 unstarted | Jun 26 |
 | S6 | DNS / domain hosting | Decide GoDaddy (National) vs. Network Solutions; plan record switchover | ⚪ not started | Phase 7 |
+| S8 | SMTP for website email | Form notifications (contact, scholarships, grants) need an SMTP credential from National's mail (M365 mailbox for info@psia-nrm.org, or an SMTP relay / Azure Communication Services in the PSIA-NRM subscription). **Decision (Jul 3): NOT using Nick's personal mail server.** Until provided, form entries persist in wp-admin (Form Entries) with CSV export — nothing lost, office just has to check the dashboard. Bundle this ask with the OAuth request (N1) to Sean. | ⚪ blocked on National | With S5 |
 
 ## 🟡 Open — owed by Herb (NRM CEO)
 
@@ -41,6 +42,7 @@ These are the long poles. All were effectively requested by mid-May; as of his M
 | N4 | Finalize copy & SVG logos | Homepage hero + "Our Mountain" copy (with Jessica/Jill); official NRM logo in SVG | ⚪ not started | Jul 24 |
 | N5 | Wire OAuth login | Implement WP OIDC login once S5 lands | ⚪ blocked by S5 | Jul 17 |
 | N6 | ~~Gather Jessica's website input~~ | **CLOSED — removed as a blocker (Jun 29).** Jessica Quay nonresponsive; Nick has informed other stakeholders and is proceeding without her input. Board carte blanche covers the content calls. Invoice-system details now come from the source audit (N7) + Sean, not from her. | ⚪ closed — not blocking | — |
+| N8 | Rich staff editing guide | Turn `EDITING-GUIDE.md` into a rich-text guide **with screenshots** for non-technical staff (Jill/office) — walk through Site Content panel, page editing, discipline settings, members/events, form entries/CSV. Do after the admin UI stabilizes (post-sprint), before handoff/training. Could live as a WP page in the admin itself or a PDF. | ⚪ noted Jul 3 | Before content lock / staff handoff |
 | N7 | Audit + decouple the invoice system | Pin down what the ed-staff invoice system is (in source audit), then move it to a stable subdomain on the old host before DNS cutover so launch doesn't break it. Needs Sean (National's host). | 🔴 launch dependency | Before cutover (late Jul) |
 
 ## 🟢 Done
@@ -67,6 +69,14 @@ These are the long poles. All were effectively requested by mid-May; as of his M
 - **If any Sean item goes 7+ days past target with no movement** → Herb pings Jeff directly. **(Sean is no longer the blocker — he delivered Jun 26.)**
 
 ---
+
+## 🎯 LIVE DEMO — Monday July 6, 2026
+
+Nick demos the Azure staging site live to Herb (CEO) + NRM staff. Site must be stable and polished by EOD Sunday. No risky deploys after Saturday. Demo prep checklist: `deploy/DEMO-CHECKLIST.md` (being written overnight Jul 3).
+
+## ⚠️ URGENT open item
+
+- **GitHub repo `nickpdawson/psia-nrm-website` is PUBLIC** (created 2026-07-03; PAT couldn't flip visibility). Contains member PII (`people.json`) + candid internal docs (tracker, Herb/Sean nudge drafts). **Fix: repo Settings → Danger Zone → Make private.** Nick deferred — do at next GH session.
 
 ## Change log
 

@@ -186,7 +186,27 @@ function nrm_maybe_import_pages() {
             if ($parent) $parent_id = $parent->ID;
         }
         $path = ($parent_id ? $pg['parent'] . '/' : '') . $pg['slug'];
-        if (get_page_by_path($path)) continue; // already exists
+        $existing = get_page_by_path($path);
+
+        if ($existing) {
+            // Content-sync: update from the seed ONLY if the page hasn't been
+            // human-edited. We know that when its current content still matches
+            // the hash recorded at seed time (missing hash = pre-hash page,
+            // treated as unedited once, then stamped).
+            $seed_hash = md5($pg['content']);
+            $recorded  = get_post_meta($existing->ID, '_nrm_seed_hash', true);
+            $current   = md5($existing->post_content);
+            if ($current === $seed_hash) {
+                update_post_meta($existing->ID, '_nrm_seed_hash', $seed_hash);
+                continue; // already in sync
+            }
+            if ($recorded && $recorded !== $current) {
+                continue; // staff edited this page — their version wins
+            }
+            wp_update_post(['ID' => $existing->ID, 'post_content' => $pg['content']]);
+            update_post_meta($existing->ID, '_nrm_seed_hash', $seed_hash);
+            continue;
+        }
 
         $pid = wp_insert_post([
             'post_type' => 'page', 'post_title' => $pg['title'],
@@ -195,9 +215,16 @@ function nrm_maybe_import_pages() {
         ]);
         if (is_wp_error($pid)) continue;
         update_post_meta($pid, '_nrm_seeded', 1);
+        update_post_meta($pid, '_nrm_seed_hash', md5($pg['content']));
         foreach (($pg['meta'] ?? []) as $k => $v) {
             update_post_meta($pid, $k, $v);
         }
+    }
+
+    // Remove WordPress's default placeholder content.
+    foreach (['sample-page' => 'page', 'hello-world' => 'post'] as $slug => $type) {
+        $ph = get_page_by_path($slug, OBJECT, $type);
+        if ($ph) wp_delete_post($ph->ID, true);
     }
 
     update_option('nrm_pages_seed_sig', $sig);
