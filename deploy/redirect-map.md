@@ -54,7 +54,7 @@ HTTP 200 at verification time.
 | 41 | `/info/make-contact-with-us/` | `/contact/` | |
 | 42 | `/info/region-awards/` | `/region-awards/` | 1:1 (flattened) |
 | 43 | `/info/region-newsletter/` | `/archive/` | Newsletter archive → archive |
-| 44 | `/info/region-sponsors/` | `/region-sponsors/` | 1:1 (flattened) |
+| 44 | `/info/region-sponsors/` → **410 gone** (NRM no longer has region sponsors — removed 2026-07-04) 
 | 45 | `/membership/` | `/membership/` | Hub with anchor sections |
 | 46 | `/membership/about-psia-aasi/` | `/about-psia-aasi/` | 1:1 (flattened) |
 | 47 | `/membership/become-a-member/` | `/become-a-member/` | 1:1 (flattened) |
@@ -176,7 +176,7 @@ location = /info/board-of-directors-elections/                    { return 301 /
 location = /info/make-contact-with-us/                            { return 301 /contact/; }
 location = /info/region-awards/                                   { return 301 /region-awards/; }
 location = /info/region-newsletter/                               { return 301 /archive/; }
-location = /info/region-sponsors/                                 { return 301 /region-sponsors/; }
+location = /info/region-sponsors/ { return 410; }
 location = /membership/about-psia-aasi/                           { return 301 /about-psia-aasi/; }
 location = /membership/become-a-member/                           { return 301 /become-a-member/; }
 location = /membership/certification/                             { return 301 "/membership/#maintaining-certification"; }
@@ -250,7 +250,7 @@ Redirect 301 /info/board-of-directors-elections/ /board-elections/
 Redirect 301 /info/make-contact-with-us/ /contact/
 Redirect 301 /info/region-awards/ /region-awards/
 Redirect 301 /info/region-newsletter/ /archive/
-Redirect 301 /info/region-sponsors/ /region-sponsors/
+Redirect gone /info/region-sponsors/
 RewriteRule ^info/?$ /contact/ [R=301,L]
 Redirect 301 /membership/about-psia-aasi/ /about-psia-aasi/
 Redirect 301 /membership/become-a-member/ /become-a-member/
