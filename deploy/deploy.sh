@@ -37,7 +37,7 @@ case "${1:-}" in
       WORDPRESS_DB_USER="${WP_DB_USER:-wp}" \
       WORDPRESS_DB_PASSWORD="$WP_DB_PASSWORD" \
       WORDPRESS_TABLE_PREFIX="nrm_" \
-      WORDPRESS_CONFIG_EXTRA="define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);" \
+      WORDPRESS_CONFIG_EXTRA="if (!empty(\$_SERVER['HTTP_X_FORWARDED_PROTO']) && \$_SERVER['HTTP_X_FORWARDED_PROTO'] === 'https') { \$_SERVER['HTTPS'] = 'on'; } define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL); if (!empty(\$_SERVER['HTTP_HOST']) && preg_match('/^[a-z0-9.-]+\$/i', \$_SERVER['HTTP_HOST'])) { define('WP_HOME', 'https://' . \$_SERVER['HTTP_HOST']); define('WP_SITEURL', 'https://' . \$_SERVER['HTTP_HOST']); }" \
       WEBSITES_ENABLE_APP_SERVICE_STORAGE=true \
       WEBSITES_PORT=80 \
       -o none && echo "app settings set (password hidden)"

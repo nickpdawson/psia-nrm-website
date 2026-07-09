@@ -12,8 +12,9 @@ We're rebuilding the PSIA-NRM division website (`psia-nrm.org`) and want members
 
 - `client_id` and `client_secret` (delivered out-of-band, not over email).
 - Confirmation that the following redirect URIs are accepted:
-  - `https://psia-nrm-website-gvcsgxcxdpaxg0hp.canadacentral-01.azurewebsites.net/wp-login.php?action=psia-oauth-callback` (Azure staging — the site is already running in the PSIA-NRM subscription Sean provisioned)
-  - `https://psia-nrm.org/wp-login.php?action=psia-oauth-callback` and `https://www.psia-nrm.org/wp-login.php?action=psia-oauth-callback` (production, post-cutover)
+  - `https://northernrocky.org/wp-login.php?action=psia-oauth-callback` and `https://www.northernrocky.org/wp-login.php?action=psia-oauth-callback` (**new production domain** — the division is moving from psia-nrm.org to northernrocky.org; the site is already live here behind Cloudflare)
+  - `https://psia-nrm-website-gvcsgxcxdpaxg0hp.canadacentral-01.azurewebsites.net/wp-login.php?action=psia-oauth-callback` (Azure origin / staging)
+  - `https://psia-nrm.org/wp-login.php?action=psia-oauth-callback` and `https://www.psia-nrm.org/wp-login.php?action=psia-oauth-callback` (legacy domain, which will 301-redirect to northernrocky.org at go-live)
   - `http://localhost:8080/wp-login.php?action=psia-oauth-callback` (local dev)
 
 ### 2. Confirm configuration

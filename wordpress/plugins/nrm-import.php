@@ -174,9 +174,10 @@ function nrm_maybe_import_pages() {
     $pages = json_decode($json, true);
     if (!is_array($pages)) { error_log('NRM Import: pages.json invalid'); return; }
 
-    // Re-run whenever the seed file changes (new pages added by a deploy);
-    // existing pages are never touched — staff edits win.
-    $sig = md5($json);
+    // Re-run whenever the seed file changes OR the sync logic version bumps.
+    // Bump the version suffix when the content-sync algorithm changes so the
+    // corrected logic re-runs against already-seeded sites.
+    $sig = md5($json . '|sync-v2');
     if (get_option('nrm_pages_seed_sig') === $sig) return;
 
     foreach ($pages as $pg) {
@@ -189,22 +190,26 @@ function nrm_maybe_import_pages() {
         $existing = get_page_by_path($path);
 
         if ($existing) {
-            // Content-sync: update from the seed ONLY if the page hasn't been
-            // human-edited. We know that when its current content still matches
-            // the hash recorded at seed time (missing hash = pre-hash page,
-            // treated as unedited once, then stamped).
-            $seed_hash = md5($pg['content']);
-            $recorded  = get_post_meta($existing->ID, '_nrm_seed_hash', true);
-            $current   = md5($existing->post_content);
-            if ($current === $seed_hash) {
-                update_post_meta($existing->ID, '_nrm_seed_hash', $seed_hash);
-                continue; // already in sync
-            }
-            if ($recorded && $recorded !== $current) {
-                continue; // staff edited this page — their version wins
-            }
+            // Content-sync: update from the seed ONLY if a human hasn't edited
+            // the page since we last applied a seed. We compare like-for-like:
+            //   _nrm_seed_applied = md5 of the STORED post_content right after our
+            //                       last apply (WP munges content on save, so this
+            //                       must be the stored form, not the seed string).
+            //   _nrm_seed_src     = md5 of the seed SOURCE string we last applied.
+            $src     = md5($pg['content']);
+            $applied = get_post_meta($existing->ID, '_nrm_seed_applied', true);
+            $srcprev = get_post_meta($existing->ID, '_nrm_seed_src', true);
+            $current = md5($existing->post_content);
+
+            // Human edited since our last apply → leave their version alone.
+            if ($applied && $applied !== $current) continue;
+            // Seed unchanged since last apply, and already applied → nothing to do.
+            if ($applied && $srcprev === $src) continue;
+
             wp_update_post(['ID' => $existing->ID, 'post_content' => $pg['content']]);
-            update_post_meta($existing->ID, '_nrm_seed_hash', $seed_hash);
+            $fresh = get_post($existing->ID);
+            update_post_meta($existing->ID, '_nrm_seed_applied', md5($fresh->post_content));
+            update_post_meta($existing->ID, '_nrm_seed_src', $src);
             continue;
         }
 
@@ -215,7 +220,9 @@ function nrm_maybe_import_pages() {
         ]);
         if (is_wp_error($pid)) continue;
         update_post_meta($pid, '_nrm_seeded', 1);
-        update_post_meta($pid, '_nrm_seed_hash', md5($pg['content']));
+        $fresh = get_post($pid);
+        update_post_meta($pid, '_nrm_seed_applied', md5($fresh->post_content));
+        update_post_meta($pid, '_nrm_seed_src', md5($pg['content']));
         foreach (($pg['meta'] ?? []) as $k => $v) {
             update_post_meta($pid, $k, $v);
         }

@@ -85,6 +85,36 @@ function nrm_forms_definitions() {
                 'description'   => ['label' => 'Describe the event and its educational content', 'type' => 'textarea', 'required' => true],
             ],
         ],
+        'staff-timesheet' => [
+            'title' => 'NRM Staff Timesheet',
+            'success' => 'Timesheet submitted — thank you. The office will process it for payment. Submit a separate timesheet for each event you work.',
+            'fields' => [
+                'name'          => ['label' => 'Your name', 'type' => 'text', 'required' => true],
+                'email'         => ['label' => 'Email', 'type' => 'email', 'required' => true],
+                'membership_id' => ['label' => 'PSIA-AASI member number', 'type' => 'text', 'required' => true],
+                'team'          => ['label' => 'Education team / discipline', 'type' => 'text', 'required' => true],
+                'role'          => ['label' => 'Your role at the event (examiner, clinician, DCE, etc.)', 'type' => 'text', 'required' => true],
+                'event_name'    => ['label' => 'Event name', 'type' => 'text', 'required' => true],
+                'event_location'=> ['label' => 'Event location', 'type' => 'text', 'required' => true],
+                'event_start'   => ['label' => 'Event start date', 'type' => 'date', 'required' => true],
+                'event_end'     => ['label' => 'Event end date', 'type' => 'date', 'required' => false],
+                'days_worked'   => ['label' => 'Days worked', 'type' => 'number', 'required' => true],
+                'notes'         => ['label' => 'Notes (travel, split days, anything payroll should know)', 'type' => 'textarea', 'required' => false],
+            ],
+        ],
+        'wellness-self-assessment' => [
+            'title' => 'Wellness Self-Assessment',
+            'success' => 'Thank you — your self-assessment has been recorded. Please complete this before staffing each event.',
+            'fields' => [
+                'name'          => ['label' => 'Your name', 'type' => 'text', 'required' => true],
+                'email'         => ['label' => 'Email', 'type' => 'email', 'required' => true],
+                'event_name'    => ['label' => 'Event you are staffing', 'type' => 'text', 'required' => true],
+                'event_date'    => ['label' => 'Event date', 'type' => 'date', 'required' => true],
+                'feeling_well'  => ['label' => 'Are you feeling healthy and well enough to safely staff this event?', 'type' => 'text', 'required' => true],
+                'symptoms'      => ['label' => 'Any symptoms, injuries, or concerns to note?', 'type' => 'textarea', 'required' => false],
+                'acknowledge'   => ['label' => 'Type your name to acknowledge you have read the NRM Wellness Operating Plan', 'type' => 'text', 'required' => true],
+            ],
+        ],
     ];
 }
 

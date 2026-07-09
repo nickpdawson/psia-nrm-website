@@ -1,11 +1,18 @@
-# PSIA-NRM Redirect Map — old psia-nrm.org → new site
+# PSIA-NRM Redirect Map — old psia-nrm.org → new site (northernrocky.org)
 
 **Purpose:** DNS-cutover redirect map. Every URL from the old www.psia-nrm.org site (86 mirrored
 pages + the `/thestoke/` newsletter archive) mapped to its new-site path, verified against the
-staging site (`psia-nrm-website-…azurewebsites.net`) on 2026-07-03. All non-410 targets returned
-HTTP 200 at verification time.
+staging site on 2026-07-03. All non-410 targets returned HTTP 200 at verification time.
 
-**Generated:** 2026-07-03
+**⚠️ DOMAIN CHANGE (2026-07-09):** the new production root is **`northernrocky.org`** (not psia-nrm.org).
+Two redirect layers apply at go-live:
+1. **Legacy-domain redirect (front psia-nrm.org, at National's registrar/host):**
+   `psia-nrm.org/*` and `www.psia-nrm.org/*` → `https://northernrocky.org/*` (301, path-preserving).
+   psia-nrm.org DNS is NOT in the northernrocky.org Cloudflare account — coordinate with Sean.
+2. **Path redirects (table below), applied ON northernrocky.org** — map the *old site's* URL structure
+   to the new pages. In the nginx/htaccess blocks below, the new-site host is now `northernrocky.org`.
+
+**Generated:** 2026-07-03 · **Domain updated:** 2026-07-09
 
 ## Mapping table
 
