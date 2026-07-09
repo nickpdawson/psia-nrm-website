@@ -57,6 +57,14 @@ get_header(); ?>
       <?php endforeach; ?>
     </div>
 
+    <a href="<?php echo get_post_type_archive_link('nrm_member'); ?>" class="card mb-4" style="display:flex;align-items:center;gap:1rem;text-decoration:none;color:inherit;background:var(--psia-teal-light);border-color:var(--psia-teal-mid);">
+      <span style="color:var(--psia-teal);flex-shrink:0;"><?php echo nrm_icon('users', 28); ?></span>
+      <span>
+        <span class="text-teal font-bold" style="display:block;">Find a Member</span>
+        <span class="text-secondary text-sm">Search the full directory of NRM instructors by name, discipline, or school &rarr;</span>
+      </span>
+    </a>
+
     <h2 class="section-title">Member Schools</h2>
     <div class="card" style="margin-bottom:2rem;">
       <p class="text-secondary text-sm mb-4">NRM member schools across Montana, Wyoming, North Dakota, and South Dakota.</p>

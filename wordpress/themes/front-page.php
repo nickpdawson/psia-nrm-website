@@ -1,32 +1,26 @@
 <?php get_header(); ?>
 
-<!-- Hero with background image -->
-<section style="position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center;">
-  <div style="position:absolute;inset:0;">
-    <img src="<?php echo esc_url(nrm_hero_image_url()); ?>"
-         alt="Skier in Montana powder"
-         style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
-    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(3,83,104,0.88) 0%, rgba(4,89,150,0.82) 50%, rgba(3,83,104,0.88) 100%);"></div>
-  </div>
-  <div class="container" style="position:relative;z-index:1;padding-top:3rem;padding-bottom:3rem;">
+<!-- Hero banner -->
+<section class="hero-banner">
+  <img src="<?php echo home_url('/wp-content/uploads/brand/nrm-hero-banner.jpg'); ?>"
+       alt="PSIA-AASI Northern Rocky Mountain" width="2400" height="728" style="width:100%;display:block;">
+</section>
+
+<!-- Tagline + calls to action -->
+<section class="hero" style="padding:2.5rem 0;">
+  <div class="container">
     <div style="max-width:760px;">
-      <?php if (file_exists(ABSPATH . 'wp-content/uploads/brand/nrm-logo-2026.png')): ?>
-        <img src="<?php echo home_url('/wp-content/uploads/brand/nrm-logo-2026.png'); ?>"
-             alt="PSIA-AASI Northern Rocky Mountain"
-             class="hero-logo"
-             style="height:150px;width:auto;margin-bottom:1.5rem;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.25);">
-      <?php endif; ?>
-      <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.02em;color:white;">
+      <h1 style="font-size:clamp(1.75rem,4.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:0.75rem;letter-spacing:-0.02em;color:white;">
         <?php echo nl2br(esc_html(nrm_setting('hero_heading'))); ?>
       </h1>
-      <p style="font-size:1.25rem;color:rgba(255,255,255,0.85);max-width:600px;line-height:1.6;">
+      <p style="font-size:1.125rem;color:rgba(255,255,255,0.85);max-width:600px;line-height:1.6;">
         <?php echo esc_html(nrm_setting('hero_text')); ?>
       </p>
-      <div style="display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;">
+      <div style="display:flex;gap:1rem;margin-top:1.5rem;flex-wrap:wrap;">
         <a href="<?php echo esc_url(nrm_setting('hero_cta1_url')); ?>" class="btn btn-primary"><?php echo esc_html(nrm_setting('hero_cta1_label')); ?></a>
         <a href="<?php echo esc_url(nrm_setting('hero_cta2_url')); ?>" class="btn btn-secondary"><?php echo esc_html(nrm_setting('hero_cta2_label')); ?></a>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:1.5rem;margin-top:3rem;max-width:400px;">
+      <div style="display:grid;grid-template-columns:repeat(3,auto);gap:1.5rem;margin-top:2rem;max-width:400px;">
         <?php foreach ([1, 2, 3] as $n): ?>
         <div>
           <div style="font-size:clamp(1.5rem,3vw,2.5rem);font-weight:700;color:white;"><?php echo esc_html(nrm_setting("stat{$n}_number")); ?></div>
