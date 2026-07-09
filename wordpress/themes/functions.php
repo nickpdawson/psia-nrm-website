@@ -550,9 +550,11 @@ add_action('template_redirect', function () {
     if (ctype_digit($req)) {
         if (get_post_type((int)$req) === 'nrm_event') $events = [(int)$req];
     } else {
+        // Export/subscribe includes all events (matches the calendar view). Add
+        // ?upcoming=1 for a future-only feed.
         $args = ['post_type' => 'nrm_event', 'posts_per_page' => 500, 'fields' => 'ids',
-                 'meta_key' => 'nrm_event_start', 'orderby' => 'meta_value', 'order' => 'ASC',
-                 'meta_query' => [['key' => 'nrm_event_start', 'value' => date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE']]];
+                 'meta_key' => 'nrm_event_start', 'orderby' => 'meta_value', 'order' => 'ASC', 'meta_query' => []];
+        if (!empty($_GET['upcoming'])) $args['meta_query'][] = ['key' => 'nrm_event_start', 'value' => date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE'];
         $tax = [];
         if (!empty($_GET['discipline'])) $tax[] = ['taxonomy'=>'nrm_discipline','field'=>'slug','terms'=>sanitize_title($_GET['discipline'])];
         if (!empty($_GET['type']))       $tax[] = ['taxonomy'=>'nrm_event_type','field'=>'slug','terms'=>sanitize_title($_GET['type'])];
