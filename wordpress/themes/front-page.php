@@ -36,22 +36,22 @@
 <section class="container quick-actions" style="margin-bottom:3rem;">
   <div class="card-grid card-grid-4">
     <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>" class="card" style="text-decoration:none;color:inherit;">
-      <div style="font-size:1.5rem;margin-bottom:0.75rem;">📋</div>
+      <div class="quick-action-icon"><?php echo nrm_icon('clipboard-list', 26); ?></div>
       <h3 class="text-teal font-bold mb-2">Register for a Clinic</h3>
       <p class="text-secondary text-sm">Find and sign up for upcoming clinics, prep courses, and assessments</p>
     </a>
     <a href="<?php echo home_url('/disciplines/'); ?>" class="card" style="text-decoration:none;color:inherit;">
-      <div style="font-size:1.5rem;margin-bottom:0.75rem;">📚</div>
+      <div class="quick-action-icon"><?php echo nrm_icon('book-open', 26); ?></div>
       <h3 class="text-teal font-bold mb-2">Exam Prep Materials</h3>
       <p class="text-secondary text-sm">Access certification standards, assessment forms, and prep outlines by discipline</p>
     </a>
     <a href="https://discord.gg/khuz6TYKX3" target="_blank" rel="noopener" class="card" style="text-decoration:none;color:inherit;">
-      <div style="font-size:1.5rem;margin-bottom:0.75rem;">💬</div>
+      <div class="quick-action-icon"><?php echo nrm_icon('messages-square', 26); ?></div>
       <h3 class="text-teal font-bold mb-2">Join the Community</h3>
       <p class="text-secondary text-sm">Connect with fellow instructors on Discord — study groups, gear exchange, and more</p>
     </a>
     <a href="<?php echo home_url('/whos-who/'); ?>" class="card" style="text-decoration:none;color:inherit;">
-      <div style="font-size:1.5rem;margin-bottom:0.75rem;">👥</div>
+      <div class="quick-action-icon"><?php echo nrm_icon('users', 26); ?></div>
       <h3 class="text-teal font-bold mb-2">Who's Who</h3>
       <p class="text-secondary text-sm">Meet the board, education teams, discipline chairs, and office staff</p>
     </a>
@@ -125,7 +125,7 @@ if (!$events->have_posts()) {
             <span class="badge" style="background:#EBF8FF;color:#2B6CB0;"><?php echo esc_html($t->name); ?></span>
           <?php endforeach; endif; ?>
           <h3 style="margin-top:0.5rem;"><?php the_title(); ?></h3>
-          <p class="text-muted text-sm">📍 <?php echo esc_html($location); ?></p>
+          <p class="text-muted text-sm" style="display:flex;align-items:center;gap:0.35rem;"><?php echo nrm_icon('map-pin', 14); ?> <?php echo esc_html($location); ?></p>
           <div class="flex items-center justify-between mt-2">
             <span class="text-teal font-bold text-sm"><?php echo esc_html($price); ?></span>
             <?php if ($reg_url && $start && strtotime($start) >= strtotime('today')): ?>

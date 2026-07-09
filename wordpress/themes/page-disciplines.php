@@ -6,7 +6,7 @@ get_header(); ?>
   <div class="container">
     <h1 style="font-size:2.5rem;font-weight:700;">Disciplines & Specialties</h1>
     <p style="color:rgba(255,255,255,0.8);max-width:600px;font-size:1.125rem;">
-      Everything you need for your certification journey — standards, documents, prep materials, and upcoming events — all in one place.
+      Standards, prep materials, and upcoming assessments for every discipline NRM teaches.
     </p>
   </div>
 </section>
@@ -27,19 +27,21 @@ get_header(); ?>
       foreach ($disc_pages as $dp):
         $page = get_page_by_path($dp['slug']);
         $url = $page ? get_permalink($page) : '#';
-        // Count ed staff
+        // Count education staff
         $count = new WP_Query(['post_type'=>'nrm_member','tax_query'=>[['taxonomy'=>'nrm_role','field'=>'name','terms'=>'Education Staff'],['taxonomy'=>'nrm_discipline','field'=>'name','terms'=>$dp['title']]],'fields'=>'ids','posts_per_page'=>-1]);
-        // Count events
-        $ev_count = new WP_Query(['post_type'=>'nrm_event','tax_query'=>[['taxonomy'=>'nrm_discipline','field'=>'name','terms'=>$dp['title']]],'fields'=>'ids','posts_per_page'=>-1]);
+        // Count upcoming events (truthful — see §1.3)
+        $ev_count = new WP_Query(['post_type'=>'nrm_event','tax_query'=>[['taxonomy'=>'nrm_discipline','field'=>'name','terms'=>$dp['title']]],'meta_key'=>'nrm_event_start','meta_query'=>[['key'=>'nrm_event_start','value'=>date('Y-m-d'),'compare'=>'>=','type'=>'DATE']],'fields'=>'ids','posts_per_page'=>-1]);
       ?>
         <a href="<?php echo esc_url($url); ?>" class="card" style="text-decoration:none;color:inherit;border-top:4px solid <?php echo $dp['color']; ?>;">
           <span style="background:<?php echo $dp['color']; ?>;color:<?php echo $dp['text']; ?>;padding:0.125rem 0.625rem;border-radius:9999px;font-size:0.75rem;font-weight:600;"><?php echo $dp['title']; ?></span>
           <h3 class="text-teal font-bold" style="margin:0.75rem 0 0.25rem;font-size:1.125rem;"><?php echo $dp['title']; ?></h3>
           <p class="text-secondary text-sm" style="line-height:1.6;"><?php echo $dp['desc']; ?></p>
+          <?php if ($count->found_posts > 0 || $ev_count->found_posts > 0): ?>
           <div class="flex gap-4 mt-2 text-muted text-xs">
-            <span><?php echo $count->found_posts; ?> ed staff</span>
-            <span><?php echo $ev_count->found_posts; ?> events</span>
+            <?php if ($count->found_posts > 0): ?><span><?php echo $count->found_posts; ?> education staff</span><?php endif; ?>
+            <?php if ($ev_count->found_posts > 0): ?><span><?php echo $ev_count->found_posts . ' upcoming ' . _n('event', 'events', $ev_count->found_posts); ?></span><?php endif; ?>
           </div>
+          <?php endif; ?>
         </a>
       <?php endforeach; ?>
     </div>

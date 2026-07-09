@@ -149,17 +149,17 @@ $initials = 'ND';
           <div class="card mb-4">
             <h3 class="text-teal font-bold" style="margin-bottom:0.75rem;font-size:0.9375rem;">Quick Actions</h3>
             <div style="display:flex;flex-direction:column;gap:0.5rem;">
-              <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>" style="display:block;padding:0.625rem;background:var(--ice);border-radius:0.5rem;font-size:0.8125rem;text-decoration:none;color:var(--psia-teal);font-weight:600;">
-                📋 Register for a Clinic
+              <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>" class="profile-quick-link">
+                <?php echo nrm_icon('clipboard-list', 16); ?> Register for a Clinic
               </a>
-              <a href="<?php echo home_url('/alpine/'); ?>" style="display:block;padding:0.625rem;background:var(--ice);border-radius:0.5rem;font-size:0.8125rem;text-decoration:none;color:var(--psia-teal);font-weight:600;">
-                📚 Level III Prep Materials
+              <a href="<?php echo home_url('/alpine/'); ?>" class="profile-quick-link">
+                <?php echo nrm_icon('book-open', 16); ?> Level III Prep Materials
               </a>
-              <a href="https://members.thesnowpros.org" target="_blank" rel="noopener" style="display:block;padding:0.625rem;background:var(--ice);border-radius:0.5rem;font-size:0.8125rem;text-decoration:none;color:var(--psia-teal);font-weight:600;">
-                💳 Pay Dues / Manage Account
+              <a href="https://members.thesnowpros.org" target="_blank" rel="noopener" class="profile-quick-link">
+                <?php echo nrm_icon('credit-card', 16); ?> Pay Dues / Manage Account
               </a>
-              <a href="https://discord.gg/khuz6TYKX3" target="_blank" rel="noopener" style="display:block;padding:0.625rem;background:var(--ice);border-radius:0.5rem;font-size:0.8125rem;text-decoration:none;color:var(--psia-teal);font-weight:600;">
-                💬 Discord Community
+              <a href="https://discord.gg/khuz6TYKX3" target="_blank" rel="noopener" class="profile-quick-link">
+                <?php echo nrm_icon('messages-square', 16); ?> Discord Community
               </a>
             </div>
           </div>
@@ -290,7 +290,6 @@ $initials = 'ND';
           ];
           foreach ($pathway as $step):
             $bg = $step['status'] === 'earned' ? 'var(--psia-teal)' : ($step['status'] === 'next' ? '#FBBF24' : 'var(--border-light)');
-            $icon = $step['status'] === 'earned' ? '✓' : '→';
           ?>
           <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:<?php echo $step['status'] === 'next' ? '#FFFBEB' : 'var(--ice)'; ?>;border-radius:0.5rem;margin-bottom:0.5rem;<?php echo $step['status'] === 'next' ? 'border:1px solid #FCD34D;' : ''; ?>">
             <div style="width:40px;height:40px;border-radius:50%;background:<?php echo $bg; ?>;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
@@ -322,7 +321,7 @@ $initials = 'ND';
               <div style="display:flex;align-items:center;gap:0.5rem;">
                 <span class="text-secondary text-sm"><?php echo $record['earned']; ?>/<?php echo $record['required']; ?></span>
                 <?php if ($record['satisfied']): ?>
-                  <span style="color:#059669;font-size:0.75rem;">✓</span>
+                  <span style="color:#059669;display:inline-flex;"><?php echo nrm_icon('check', 14); ?></span>
                 <?php endif; ?>
               </div>
             </div>

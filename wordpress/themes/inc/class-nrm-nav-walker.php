@@ -14,9 +14,10 @@ class NRM_Nav_Walker extends Walker_Nav_Menu {
         $classes = (array) $item->classes;
         $is_current = array_intersect($classes, ['current-menu-item', 'current_page_item', 'current-menu-ancestor']);
         $output .= sprintf(
-            '<a href="%s"%s>%s',
+            '<a href="%s"%s%s>%s',
             esc_url($item->url),
             $is_current ? ' class="current"' : '',
+            $is_current ? ' aria-current="page"' : '',
             esc_html($item->title)
         );
     }
@@ -32,9 +33,8 @@ class NRM_Nav_Walker extends Walker_Nav_Menu {
  */
 function nrm_nav_fallback() {
     ?>
-    <nav class="header-nav">
-      <a href="<?php echo esc_url(home_url()); ?>" <?php echo is_front_page() ? 'class="current"' : ''; ?>>Home</a>
-      <a href="<?php echo esc_url(home_url('/pathway')); ?>">My Profile</a>
+    <nav id="primary-nav" class="header-nav" aria-label="Primary">
+      <a href="<?php echo esc_url(home_url()); ?>"<?php echo is_front_page() ? ' class="current" aria-current="page"' : ''; ?>>Home</a>
       <a href="<?php echo esc_url(get_post_type_archive_link('nrm_event')); ?>">Events &amp; Clinics</a>
       <a href="<?php echo esc_url(home_url('/disciplines')); ?>">Disciplines</a>
       <a href="<?php echo esc_url(home_url('/membership')); ?>">Membership</a>

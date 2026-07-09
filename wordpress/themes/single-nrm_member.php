@@ -149,8 +149,8 @@ while (have_posts()): the_post();
             <h2 class="text-teal font-bold mb-2">Certifications</h2>
             <?php foreach ($certs as $cert): ?>
               <div style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:var(--ice);border-radius:0.5rem;margin-bottom:0.5rem;">
-                <div style="width:32px;height:32px;border-radius:50%;background:var(--psia-teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-                  <span style="color:white;font-size:0.75rem;">✓</span>
+                <div style="width:32px;height:32px;border-radius:50%;background:var(--psia-teal);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:white;">
+                  <?php echo nrm_icon('check', 16); ?>
                 </div>
                 <div>
                   <div class="font-bold text-sm"><?php echo esc_html($cert['name']); ?>

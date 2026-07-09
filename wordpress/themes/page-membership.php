@@ -16,7 +16,7 @@ $sections = get_pages([
   <div class="container">
     <h1 style="font-size:2.5rem;font-weight:700;"><?php the_title(); ?></h1>
     <p style="color:rgba(255,255,255,0.8);max-width:600px;font-size:1.125rem;">
-      Everything you need to know about your NRM membership — dues, certification maintenance, scholarships, and more.
+      Dues, renewal deadlines, scholarships, and how to keep your certification current.
     </p>
   </div>
 </section>

@@ -251,14 +251,18 @@ function nrm_maybe_apply_cert_updates() {
     $updates = json_decode($json, true);
     if (!is_array($updates) || !$updates) return;
 
-    $sig = md5($json);
+    // Bump the version suffix to force re-apply after a save-path fix.
+    $sig = md5($json . '|apply-v2');
     if (get_option('nrm_cert_updates_sig') === $sig) return;
 
     foreach ($updates as $slug => $meta) {
         $page = get_page_by_path($slug);
         if (!$page) continue;
         if (isset($meta['nrm_cert_levels'])) {
-            update_post_meta($page->ID, 'nrm_cert_levels', wp_json_encode($meta['nrm_cert_levels'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+            // wp_slash: update_post_meta runs wp_unslash on the value, which would
+            // otherwise strip the JSON's \n / \" backslash-escapes (turning "\n"
+            // into a literal "n" — the "paidnComplete" bug). Slashing first cancels it.
+            update_post_meta($page->ID, 'nrm_cert_levels', wp_slash(wp_json_encode($meta['nrm_cert_levels'], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)));
         }
         if (!empty($meta['nrm_national_standards_url'])) {
             update_post_meta($page->ID, 'nrm_national_standards_url', esc_url_raw($meta['nrm_national_standards_url']));

@@ -28,7 +28,7 @@ function nrm_event_card_row() {
           <?php if ($is_past): ?><span class="badge" style="background:var(--border-light);color:var(--text-muted);">Past event</span><?php endif; ?>
         </div>
         <h3><?php the_title(); ?></h3>
-        <p class="text-secondary text-sm">📍 <?php echo esc_html($location); ?></p>
+        <p class="text-secondary text-sm" style="display:flex;align-items:center;gap:0.35rem;"><?php echo nrm_icon('map-pin', 14); ?> <?php echo esc_html($location); ?></p>
         <div class="entry-content text-sm mt-1" style="color:var(--text-secondary);"><?php the_content(); ?></div>
         <div class="flex items-center justify-between mt-2">
           <span class="text-teal font-bold"><?php echo esc_html($price); ?></span>

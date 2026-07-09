@@ -25,11 +25,12 @@ get_header(); ?>
         // Count members
         $tax_query = [['taxonomy' => 'nrm_role', 'field' => 'name', 'terms' => $role]];
         $count = new WP_Query(['post_type' => 'nrm_member', 'tax_query' => $tax_query, 'fields' => 'ids', 'posts_per_page' => -1]);
+        if ($count->found_posts === 0) continue; // don't render empty groups (§1.4)
       ?>
         <a href="<?php echo get_permalink($child->ID); ?>" class="card" style="text-decoration:none;color:inherit;">
           <h3 class="text-teal font-bold mb-2"><?php echo esc_html($child->post_title); ?></h3>
           <p class="text-secondary text-sm"><?php echo wp_trim_words($child->post_content, 15); ?></p>
-          <p class="text-muted text-xs mt-2"><?php echo $count->found_posts; ?> people</p>
+          <p class="text-muted text-xs mt-2"><?php echo $count->found_posts . ' ' . _n('person', 'people', $count->found_posts); ?></p>
         </a>
       <?php endforeach; ?>
     </div>
@@ -46,11 +47,12 @@ get_header(); ?>
         if ($disc) $tax_query[] = ['taxonomy' => 'nrm_discipline', 'field' => 'name', 'terms' => $disc];
         if ($spec) $tax_query[] = ['taxonomy' => 'nrm_specialty', 'field' => 'name', 'terms' => $spec];
         $count = new WP_Query(['post_type' => 'nrm_member', 'tax_query' => $tax_query, 'fields' => 'ids', 'posts_per_page' => -1]);
+        if ($count->found_posts === 0) continue; // don't render empty teams (§1.4)
       ?>
         <a href="<?php echo get_permalink($child->ID); ?>" class="card" style="text-decoration:none;color:inherit;">
           <h3 class="text-teal font-bold mb-2"><?php echo esc_html($child->post_title); ?></h3>
           <p class="text-secondary text-sm"><?php echo wp_trim_words($child->post_content, 12); ?></p>
-          <p class="text-muted text-xs mt-2"><?php echo $count->found_posts; ?> members</p>
+          <p class="text-muted text-xs mt-2"><?php echo $count->found_posts . ' ' . _n('member', 'members', $count->found_posts); ?></p>
         </a>
       <?php endforeach; ?>
     </div>

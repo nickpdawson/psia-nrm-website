@@ -79,8 +79,8 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
           <?php if (!empty($level['prerequisites'])): ?>
           <div class="card mb-4">
             <h3 class="text-teal font-bold mb-2" style="font-size:1rem;">Prerequisites</h3>
-            <div style="font-size:0.875rem;line-height:1.8;color:var(--text-secondary);">
-              <?php echo nl2br(esc_html($level['prerequisites'])); ?>
+            <div class="nrm-req">
+              <?php echo nrm_render_lines($level['prerequisites']); ?>
             </div>
           </div>
           <?php endif; ?>
@@ -88,8 +88,8 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
           <?php if (!empty($level['modules'])): ?>
           <div class="card mb-4">
             <h3 class="text-teal font-bold mb-2" style="font-size:1rem;">Assessment Modules</h3>
-            <div style="font-size:0.875rem;line-height:1.8;color:var(--text-secondary);">
-              <?php echo nl2br(esc_html($level['modules'])); ?>
+            <div class="nrm-req">
+              <?php echo nrm_render_lines($level['modules']); ?>
             </div>
           </div>
           <?php endif; ?>
@@ -116,7 +116,7 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
               <?php foreach ($level['documents'] as $doc): ?>
                 <a href="<?php echo esc_url($doc['url']); ?>" target="_blank" rel="noopener"
                    style="display:flex;align-items:center;gap:0.75rem;padding:0.75rem;background:var(--ice);border-radius:0.5rem;text-decoration:none;color:inherit;transition:background 0.2s;">
-                  <span style="font-size:1.25rem;flex-shrink:0;">📄</span>
+                  <span style="flex-shrink:0;color:var(--psia-teal);"><?php echo nrm_icon('file-text', 20); ?></span>
                   <div>
                     <div style="font-size:0.875rem;font-weight:600;color:var(--psia-teal);"><?php echo esc_html($doc['name']); ?></div>
                     <?php if (!empty($doc['type'])): ?>
@@ -141,22 +141,13 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
 
     <?php endif; // end if levels ?>
 
-    <!-- Upcoming Events (dynamic) -->
+    <!-- Events (dynamic: upcoming, else most recent) -->
     <?php
-    $event_query_args = [
-        'post_type' => 'nrm_event',
-        'posts_per_page' => 6,
-        'meta_key' => 'nrm_event_start',
-        'orderby' => 'meta_value',
-        'order' => 'ASC',
-    ];
-    if ($discipline) {
-        $event_query_args['tax_query'] = [['taxonomy' => 'nrm_discipline', 'field' => 'name', 'terms' => $discipline]];
-    }
-    $events = new WP_Query($event_query_args);
+    $disc_tax = $discipline ? ['taxonomy' => 'nrm_discipline', 'field' => 'name', 'terms' => $discipline] : null;
+    list($events, $ev_upcoming) = nrm_events_query(6, $disc_tax);
     if ($events->have_posts()):
     ?>
-    <h2 class="section-title" style="margin-top:2rem;">Upcoming <?php echo esc_html($label); ?> Events</h2>
+    <h2 class="section-title" style="margin-top:2rem;"><?php echo $ev_upcoming ? 'Upcoming' : 'Recent'; ?> <?php echo esc_html($label); ?> Events</h2>
     <div class="card-grid card-grid-3" style="margin-bottom:2rem;">
       <?php while ($events->have_posts()): $events->the_post();
         $start = get_post_meta(get_the_ID(), 'nrm_event_start', true);
@@ -165,8 +156,9 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
         $price = get_post_meta(get_the_ID(), 'nrm_event_price', true);
         $reg_url = get_post_meta(get_the_ID(), 'nrm_event_reg_url', true);
         $types = get_the_terms(get_the_ID(), 'nrm_event_type');
+        $is_past = nrm_event_is_past(get_the_ID());
       ?>
-        <div class="card" style="padding:0;overflow:hidden;">
+        <div class="card" style="padding:0;overflow:hidden;<?php echo $is_past ? 'opacity:0.75;' : ''; ?>">
           <div style="background:var(--psia-teal);color:white;padding:0.75rem 1rem;display:flex;align-items:baseline;gap:0.5rem;">
             <span style="font-size:1.5rem;font-weight:700;"><?php echo $start ? date('M j', strtotime($start)) : ''; ?></span>
             <?php if ($end && $end !== $start): ?>
@@ -177,11 +169,12 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
             <?php if ($types && !is_wp_error($types)): foreach ($types as $t): ?>
               <span class="badge" style="background:#FEF2F2;color:#991B1B;margin-bottom:0.5rem;"><?php echo esc_html($t->name); ?></span>
             <?php endforeach; endif; ?>
+            <?php if ($is_past): ?><span class="badge" style="background:var(--border-light);color:var(--text-muted);margin-bottom:0.5rem;">Past event</span><?php endif; ?>
             <h3 style="font-size:0.9375rem;color:var(--psia-teal);margin:0.25rem 0;"><?php the_title(); ?></h3>
-            <p class="text-muted text-xs">📍 <?php echo esc_html($location); ?></p>
+            <p class="text-muted text-xs" style="display:flex;align-items:center;gap:0.35rem;"><?php echo nrm_icon('map-pin', 14); ?> <?php echo esc_html($location); ?></p>
             <div style="display:flex;justify-content:space-between;align-items:center;margin-top:0.75rem;">
               <span class="text-teal font-bold text-sm"><?php echo esc_html($price); ?></span>
-              <?php if ($reg_url): ?>
+              <?php if ($reg_url && !$is_past): ?>
                 <a href="<?php echo esc_url($reg_url); ?>" target="_blank" rel="noopener" class="btn btn-teal" style="padding:0.375rem 0.75rem;font-size:0.75rem;">Register</a>
               <?php endif; ?>
             </div>
@@ -253,6 +246,8 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
 
     <div class="card-grid card-grid-4" style="margin-bottom:1.5rem;">
       <?php while ($team->have_posts()): $team->the_post();
+        // The chair is already highlighted in the banner above — don't repeat them here.
+        if ($chair && get_the_ID() == $chair) continue;
         $name = get_the_title();
         $initials = implode('', array_map(function($w) { return strtoupper($w[0] ?? ''); }, explode(' ', $name)));
         $member_roles = get_the_terms(get_the_ID(), 'nrm_role');
@@ -278,7 +273,7 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;">
       <?php if ($books): ?>
       <div class="card">
-        <h3 class="text-teal font-bold mb-2" style="font-size:1rem;">📚 Recommended Reading</h3>
+        <h3 class="text-teal font-bold mb-2" style="font-size:1rem;display:flex;align-items:center;gap:0.5rem;"><?php echo nrm_icon('book-open', 18); ?> Recommended Reading</h3>
         <div style="display:flex;flex-direction:column;gap:0.375rem;">
           <?php foreach (explode("\n", $books) as $book): $book = trim($book); if (!$book) continue; ?>
             <span style="font-size:0.875rem;color:var(--text-secondary);">• <?php echo esc_html($book); ?></span>
@@ -293,7 +288,7 @@ $fg = $badge_text[$label] ?? 'var(--psia-teal)';
       <?php endif; ?>
 
       <div class="card">
-        <h3 class="text-teal font-bold mb-2" style="font-size:1rem;">💬 Connect</h3>
+        <h3 class="text-teal font-bold mb-2" style="font-size:1rem;display:flex;align-items:center;gap:0.5rem;"><?php echo nrm_icon('messages-square', 18); ?> Connect</h3>
         <?php if ($discord_channel): ?>
           <p style="font-size:0.875rem;color:var(--text-secondary);margin-bottom:0.75rem;">
             Join <?php echo esc_html($discord_channel); ?> on Discord to find study partners, ask questions, and share resources.

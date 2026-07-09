@@ -160,6 +160,8 @@ add_action('save_post', function ($post_id) {
                 'exam_note'     => sanitize_text_field($lv['exam_note'] ?? ''),
             ];
         }
-        update_post_meta($post_id, 'nrm_cert_levels', wp_json_encode($levels, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
+        // wp_slash so update_post_meta's wp_unslash doesn't strip the JSON's
+        // backslash-escapes (the "\n" → "n" corruption).
+        update_post_meta($post_id, 'nrm_cert_levels', wp_slash(wp_json_encode($levels, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE)));
     }
 });
