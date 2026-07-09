@@ -18,7 +18,7 @@ function nrm_theme_setup() {
 add_action('after_setup_theme', 'nrm_theme_setup');
 
 function nrm_enqueue_styles() {
-    wp_enqueue_style('nrm-style', get_stylesheet_uri(), [], '2026.2');
+    wp_enqueue_style('nrm-style', get_stylesheet_uri(), [], '2026.3');
     if (is_post_type_archive('nrm_event')) {
         wp_enqueue_script('nrm-events', get_template_directory_uri() . '/js/events.js', [], '2026.1', true);
     }
@@ -416,6 +416,20 @@ function nrm_member_card($post_id, $show_title = true) {
     if ($email) echo '<p class="text-muted text-xs mt-1">'.esc_html($email).'</p>';
     echo '</a>';
 }
+
+// Canonical domain: force front-end views on the *.azurewebsites.net origin to
+// 301 to northernrocky.org (path preserved). Cloudflare reaches the origin with
+// Host: northernrocky.org, so proxied traffic is unaffected; only someone hitting
+// the raw Azure URL (or a stale cached link) gets bounced to the real domain.
+// wp-admin/AJAX/cron are excluded so Kudu + admin still work on the origin.
+add_action('template_redirect', function () {
+    if (is_admin() || (function_exists('wp_doing_ajax') && wp_doing_ajax()) || (function_exists('wp_doing_cron') && wp_doing_cron())) return;
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    if ($host && strpos($host, 'azurewebsites.net') !== false) {
+        wp_redirect('https://northernrocky.org' . ($_SERVER['REQUEST_URI'] ?? '/'), 301);
+        exit;
+    }
+}, 1);
 
 // Normalize nav menu item URLs to the CURRENT host. The menu was seeded while
 // the site lived at *.azurewebsites.net, so its stored links point there and
