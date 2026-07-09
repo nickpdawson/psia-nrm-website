@@ -9,7 +9,13 @@
     <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(3,83,104,0.88) 0%, rgba(4,89,150,0.82) 50%, rgba(3,83,104,0.88) 100%);"></div>
   </div>
   <div class="container" style="position:relative;z-index:1;padding-top:3rem;padding-bottom:3rem;">
-    <div style="max-width:720px;">
+    <div style="max-width:760px;">
+      <?php if (file_exists(ABSPATH . 'wp-content/uploads/brand/nrm-logo-2026.png')): ?>
+        <img src="<?php echo home_url('/wp-content/uploads/brand/nrm-logo-2026.png'); ?>"
+             alt="PSIA-AASI Northern Rocky Mountain"
+             class="hero-logo"
+             style="height:150px;width:auto;margin-bottom:1.5rem;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,0.25);">
+      <?php endif; ?>
       <h1 style="font-size:clamp(2rem,5vw,3.5rem);font-weight:700;line-height:1.15;margin-bottom:1rem;letter-spacing:-0.02em;color:white;">
         <?php echo nl2br(esc_html(nrm_setting('hero_heading'))); ?>
       </h1>

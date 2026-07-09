@@ -36,7 +36,7 @@ COPY wordpress/mu-plugins/            /usr/src/wordpress/wp-content/mu-plugins/
 
 # Seed data at the exact paths nrm-import.php reads. The local files are mode
 # 600 and COPY preserves that — open them up so www-data can read them.
-COPY wordpress/people.json wordpress/events.json wordpress/pages.json wordpress/cert-updates.json /var/www/
+COPY wordpress/people.json wordpress/events.json wordpress/pages.json wordpress/cert-updates.json wordpress/member-photos.json /var/www/
 RUN chmod 0444 /var/www/*.json
 
 # Uploads live on the App Service persistent /home share

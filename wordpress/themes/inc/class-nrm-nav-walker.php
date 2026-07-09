@@ -39,6 +39,7 @@ function nrm_nav_fallback() {
       <a href="<?php echo esc_url(home_url('/disciplines')); ?>">Disciplines</a>
       <a href="<?php echo esc_url(home_url('/membership')); ?>">Membership</a>
       <a href="<?php echo esc_url(home_url('/scholarships')); ?>">Scholarships</a>
+      <a href="<?php echo esc_url(get_post_type_archive_link('nrm_member')); ?>">Find a Member</a>
       <a href="<?php echo esc_url(home_url('/whos-who')); ?>">Who's Who</a>
     </nav>
     <?php

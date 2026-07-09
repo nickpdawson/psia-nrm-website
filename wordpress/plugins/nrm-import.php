@@ -268,6 +268,63 @@ function nrm_backfill_public_members() {
 }
 add_action('admin_init', 'nrm_backfill_public_members');
 
+// Add a "Find a Member" (directory) item to the Primary menu once.
+function nrm_add_directory_menu_item() {
+    if (get_option('nrm_menu_directory_added')) return;
+    $menu = wp_get_nav_menu_object('Primary');
+    if (!$menu) return;
+    foreach ((array) wp_get_nav_menu_items($menu->term_id) as $it) {
+        if (trim((string) parse_url($it->url, PHP_URL_PATH), '/') === 'people') { update_option('nrm_menu_directory_added', true); return; }
+    }
+    wp_update_nav_menu_item($menu->term_id, 0, [
+        'menu-item-title' => 'Find a Member',
+        'menu-item-url' => home_url('/people/'),
+        'menu-item-status' => 'publish',
+        'menu-item-position' => 6,
+    ]);
+    update_option('nrm_menu_directory_added', true);
+}
+add_action('admin_init', 'nrm_add_directory_menu_item');
+
+// Attach member headshots (from wordpress/member-photos.json: slug → uploads
+// relative path) as Featured Images. Idempotent; never overrides an existing
+// thumbnail. This is the data path for the "faces everywhere" goal.
+function nrm_apply_member_photos() {
+    $json = @file_get_contents('/var/www/member-photos.json');
+    if (!$json) return;
+    $map = json_decode($json, true);
+    if (!is_array($map)) return;
+    $sig = md5($json);
+    if (get_option('nrm_member_photos_sig') === $sig) return;
+
+    $upload = wp_upload_dir();
+    require_once ABSPATH . 'wp-admin/includes/image.php';
+    foreach ($map as $slug => $relpath) {
+        $member = get_page_by_path($slug, OBJECT, 'nrm_member');
+        if (!$member) continue;
+        if (has_post_thumbnail($member->ID)) continue;
+        $file = trailingslashit($upload['basedir']) . ltrim($relpath, '/');
+        if (!file_exists($file)) continue;
+        $existing = get_posts(['post_type' => 'attachment', 'meta_key' => '_wp_attached_file',
+                               'meta_value' => ltrim($relpath, '/'), 'posts_per_page' => 1, 'fields' => 'ids']);
+        if ($existing) {
+            $att_id = $existing[0];
+        } else {
+            $ft = wp_check_filetype($file);
+            $att_id = wp_insert_attachment([
+                'post_mime_type' => $ft['type'], 'post_title' => sanitize_file_name(basename($file)),
+                'post_status' => 'inherit', 'guid' => trailingslashit($upload['baseurl']) . ltrim($relpath, '/'),
+            ], $file, $member->ID);
+            if (is_wp_error($att_id) || !$att_id) continue;
+            update_post_meta($att_id, '_wp_attached_file', ltrim($relpath, '/'));
+            wp_update_attachment_metadata($att_id, wp_generate_attachment_metadata($att_id, $file));
+        }
+        set_post_thumbnail($member->ID, $att_id);
+    }
+    update_option('nrm_member_photos_sig', $sig);
+}
+add_action('admin_init', 'nrm_apply_member_photos');
+
 // ── Certification-level data updates ──
 // Curated corrections to discipline pages' nrm_cert_levels meta
 // (wordpress/cert-updates.json). Applied whenever the file changes.

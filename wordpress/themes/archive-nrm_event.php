@@ -30,8 +30,13 @@ if ($all->have_posts()) { while ($all->have_posts()) { $all->the_post();
 
 $disc_terms = get_terms(['taxonomy'=>'nrm_discipline','hide_empty'=>false]);
 $type_terms = get_terms(['taxonomy'=>'nrm_event_type','hide_empty'=>false]);
-$ics_all = esc_url(add_query_arg('nrm_ics','all', get_post_type_archive_link('nrm_event')));
+$ics_all = esc_url(add_query_arg('nrm_ics','all', home_url('/')));
 $webcal = 'webcal://' . preg_replace('#^https?://#','', $ics_all);
+// Default the time filter so the page isn't empty: show upcoming if any exist,
+// otherwise show all (e.g. between seasons, when everything is in the past).
+$has_upcoming = false;
+foreach ($events as $e) { if (!$e['past']) { $has_upcoming = true; break; } }
+$default_when = $has_upcoming ? 'upcoming' : 'all';
 ?>
 <section class="section">
   <div class="container">
@@ -40,9 +45,9 @@ $webcal = 'webcal://' . preg_replace('#^https?://#','', $ics_all);
         <h1 class="section-title" style="font-size:2rem;margin-bottom:0.25rem;">Events &amp; Clinics</h1>
         <p class="text-secondary" style="margin:0;">Clinics, assessments, and community events across the NRM region.</p>
       </div>
-      <div class="flex gap-2" style="align-items:center;">
-        <a href="<?php echo $webcal; ?>" class="btn btn-secondary" style="padding:0.5rem 0.85rem;"><?php echo nrm_icon('calendar',16); ?> Subscribe</a>
-        <a href="<?php echo $ics_all; ?>" class="btn btn-secondary" style="padding:0.5rem 0.85rem;">Export .ics</a>
+      <div class="flex gap-2" style="align-items:center;flex-wrap:wrap;">
+        <a href="<?php echo $webcal; ?>" class="btn btn-teal" style="padding:0.5rem 0.95rem;"><?php echo nrm_icon('calendar',16); ?> Subscribe to calendar</a>
+        <a href="<?php echo $ics_all; ?>" class="btn" style="padding:0.5rem 0.95rem;background:#fff;color:var(--psia-teal);border:1px solid var(--psia-teal);"><?php echo nrm_icon('arrow-right',16); ?> Export .ics</a>
       </div>
     </div>
 
@@ -57,9 +62,9 @@ $webcal = 'webcal://' . preg_replace('#^https?://#','', $ics_all);
         <?php foreach ($type_terms as $t) echo '<option value="'.esc_attr($t->slug).'">'.esc_html($t->name).'</option>'; ?>
       </select>
       <select id="ev-when" class="ev-filter" aria-label="Filter by time">
-        <option value="upcoming">Upcoming</option>
-        <option value="past">Past</option>
-        <option value="all">All</option>
+        <option value="upcoming" <?php selected($default_when,'upcoming'); ?>>Upcoming</option>
+        <option value="past" <?php selected($default_when,'past'); ?>>Past</option>
+        <option value="all" <?php selected($default_when,'all'); ?>>All</option>
       </select>
       <label style="display:inline-flex;align-items:center;gap:0.35rem;font-size:0.875rem;"><input type="checkbox" id="ev-ceu" class="ev-filter"> CEU only</label>
       <span style="flex:1;"></span>

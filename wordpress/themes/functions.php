@@ -417,6 +417,26 @@ function nrm_member_card($post_id, $show_title = true) {
     echo '</a>';
 }
 
+// Normalize nav menu item URLs to the CURRENT host. The menu was seeded while
+// the site lived at *.azurewebsites.net, so its stored links point there and
+// bounce visitors off northernrocky.org. Re-home any internal absolute URL.
+add_filter('wp_nav_menu_objects', function ($items) {
+    $home_host = parse_url(home_url(), PHP_URL_HOST);
+    foreach ($items as $it) {
+        if (empty($it->url) || $it->url === '#') continue;
+        $host = parse_url($it->url, PHP_URL_HOST);
+        if (!$host) continue; // already relative
+        // Only re-home our own hosts (azurewebsites origin or the live domain);
+        // leave genuine external links alone.
+        if ($host === $home_host || strpos($host, 'azurewebsites.net') !== false || strpos($host, 'northernrocky.org') !== false || strpos($host, 'psia-nrm') !== false) {
+            $path = parse_url($it->url, PHP_URL_PATH) ?: '/';
+            $q = parse_url($it->url, PHP_URL_QUERY);
+            $it->url = home_url($path . ($q ? '?' . $q : ''));
+        }
+    }
+    return $items;
+}, 5);
+
 // Hide the "My Profile" item (→ /pathway/) from nav for logged-out visitors —
 // the member dashboard is gated on PSIA OAuth, which isn't wired yet.
 add_filter('wp_nav_menu_objects', function ($items) {

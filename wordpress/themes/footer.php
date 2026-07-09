@@ -11,6 +11,7 @@
       <div class="footer-col">
         <h3>Quick Links</h3>
         <a href="<?php echo get_post_type_archive_link('nrm_event'); ?>">Events &amp; Clinics</a>
+        <a href="<?php echo get_post_type_archive_link('nrm_member'); ?>">Find a Member</a>
         <a href="<?php echo home_url('/scholarships/'); ?>">Scholarships</a>
         <a href="<?php echo home_url('/membership/'); ?>">Membership</a>
         <a href="<?php echo home_url('/contact/'); ?>">Contact</a>

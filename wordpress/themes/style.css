@@ -415,3 +415,7 @@ img { max-width: 100%; height: auto; }
   .cal-ev { font-size: 0; padding: 0.25rem; height: 8px; } /* collapse to dots on phones */
   .cal-daynum { font-size: 0.7rem; }
 }
+
+/* Hero branding logo (test) */
+.hero-logo { display: block; }
+@media (max-width: 640px) { .hero-logo { height: 96px !important; margin-bottom: 1rem !important; } }
