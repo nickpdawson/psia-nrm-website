@@ -204,10 +204,12 @@ while (have_posts()): the_post();
           </div>
         <?php endif; ?>
 
-        <?php if ($email): ?>
+        <?php $member_links = nrm_render_member_links(get_the_ID()); ?>
+        <?php if ($email || $member_links): ?>
           <div class="card mb-4">
             <h3 class="text-teal font-bold text-sm mb-2">Contact</h3>
-            <a href="mailto:<?php echo esc_attr($email); ?>" class="text-sm" style="word-break:break-all;"><?php echo esc_html($email); ?></a>
+            <?php if ($email): ?><a href="mailto:<?php echo esc_attr($email); ?>" class="text-sm" style="word-break:break-all;"><?php echo esc_html($email); ?></a><?php endif; ?>
+            <?php echo $member_links; ?>
           </div>
         <?php endif; ?>
 

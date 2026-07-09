@@ -372,5 +372,21 @@
     "menu_order": 0,
     "meta": {},
     "content": "<p>Please complete this brief self-assessment before staffing each event. Review the <a href=\"/wp-content/uploads/docs/nrm-wellness-operating-plan.pdf\">NRM Wellness Operating Plan</a> first if you haven't recently.</p>\n[nrm_form name=\"wellness-self-assessment\"]"
+  },
+  {
+    "slug": "member-schools",
+    "title": "Member Schools",
+    "parent": "",
+    "menu_order": 0,
+    "meta": {},
+    "content": "<p>NRM member schools are the snowsports schools and programs across Montana, Wyoming, North Dakota, and South Dakota whose instructors train and certify through PSIA-AASI Northern Rocky Mountain.</p>\n<h2>Becoming a Member School</h2>\n<p>Member schools give their instructors access to NRM education events, certification, and the regional community. To join or renew, contact the NRM office at <a href=\"mailto:info@northernrocky.org\">info@northernrocky.org</a> or 406-581-6139.</p>\n<h2>Paying School Dues</h2>\n<p>School membership dues are billed annually. Pay online through the national member portal at <a href=\"https://members.thesnowpros.org\" target=\"_blank\" rel=\"noopener\">members.thesnowpros.org</a>, or contact the office for an invoice.</p>\n<h2>Your School's Public Profile</h2>\n<p>Each member school has a page in our directory listing the instructors who teach there. Want to add your school's logo, a short description, and a link for prospective students or instructors? Send the details to the office and we'll set it up — a public school profile helps students find lessons and helps you recruit instructors.</p>\n<h2>Find Member Schools</h2>\n<p>Browse all member schools and their instructors on the <a href=\"/whos-who/\">Who's Who</a> page.</p>"
+  },
+  {
+    "slug": "help",
+    "title": "Help &amp; How-To",
+    "parent": "",
+    "menu_order": 0,
+    "meta": {},
+    "content": "<p>Quick answers for members, instructors, and staff. Don't see what you need? Contact the office at <a href=\"mailto:info@northernrocky.org\">info@northernrocky.org</a> or 406-581-6139.</p>\n<h2>How do I find and register for events?</h2>\n<p>Go to <a href=\"/events/\">Events &amp; Clinics</a>. Use the filters to narrow by discipline, event type, or CEU-eligible events, and switch between list and calendar views. Click an event for details and the registration link. You can also subscribe to the calendar or export events to your own calendar app with the Subscribe / Export .ics buttons.</p>\n<h2>How do I pay my dues?</h2>\n<p>Dues are paid through the national member portal at <a href=\"https://members.thesnowpros.org\" target=\"_blank\" rel=\"noopener\">members.thesnowpros.org</a>. See <a href=\"/membership/#dues-rates\">Membership → Dues &amp; Rates</a> for current amounts and deadlines.</p>\n<h2>How do I set up my member profile?</h2>\n<p>Member profiles show your certifications, school, and (if you choose) a photo and contact links so students and fellow instructors can find you. To add or update your profile — including a headshot, social links, or tip links (Venmo, Zelle, Apple Cash) — contact the office. Making your profile public is optional and you can turn it off anytime; profiles are for professional use as a snowsports instructor.</p>\n<h2>How do I keep my certification current (CEUs)?</h2>\n<p>See <a href=\"/membership/#maintaining-certification\">Membership → Maintaining Your Certification</a> for CEU requirements. On the <a href=\"/events/\">Events</a> page, filter to <strong>CEU only</strong> to find the quickest upcoming ways to earn credits.</p>\n<h2>How do I apply for a scholarship?</h2>\n<p>See <a href=\"/scholarships/\">Scholarships &amp; Grants</a> — applications are on that page, with deadlines and the two-step process for individual scholarships (your application plus a director recommendation).</p>"
   }
 ]

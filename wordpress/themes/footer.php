@@ -19,6 +19,7 @@
         <h3>Resources</h3>
         <a href="<?php echo home_url('/disciplines/'); ?>">Disciplines</a>
         <a href="<?php echo home_url('/whos-who/'); ?>">Who's Who &amp; Schools</a>
+        <a href="<?php echo home_url('/help/'); ?>">Help &amp; How-To</a>
         <a href="<?php echo home_url('/ada-accommodation/'); ?>">ADA Accommodation</a>
         <a href="https://www.thesnowpros.org" target="_blank" rel="noopener">PSIA-AASI National</a>
       </div>

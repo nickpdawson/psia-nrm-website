@@ -18,7 +18,10 @@ function nrm_theme_setup() {
 add_action('after_setup_theme', 'nrm_theme_setup');
 
 function nrm_enqueue_styles() {
-    wp_enqueue_style('nrm-style', get_stylesheet_uri(), [], '2026.1');
+    wp_enqueue_style('nrm-style', get_stylesheet_uri(), [], '2026.2');
+    if (is_post_type_archive('nrm_event')) {
+        wp_enqueue_script('nrm-events', get_template_directory_uri() . '/js/events.js', [], '2026.1', true);
+    }
 }
 add_action('wp_enqueue_scripts', 'nrm_enqueue_styles');
 
@@ -206,7 +209,35 @@ function nrm_member_meta_box($post) {
         else echo '<input type="'.$f['type'].'" name="'.$key.'" id="'.$key.'" value="'.esc_attr($v).'" class="regular-text">';
         echo '</td></tr>';
     }
+    // Public profile toggle + consent
+    $public = get_post_meta($post->ID, 'nrm_public', true);
+    echo '<tr><th><label for="nrm_public">Public profile</label></th><td>';
+    echo '<label><input type="checkbox" name="nrm_public" id="nrm_public" value="1" '.checked($public,'1',false).'> List this member in the public directory</label>';
+    echo '<p style="margin:0.4rem 0 0;padding:0.5rem 0.75rem;background:#f6f7f7;border-left:3px solid var(--psia-teal,#035368);font-size:12px;color:#555;">'.esc_html(nrm_public_consent_text()).'</p></td></tr>';
+    // Social + tip links
+    $social = [
+        'nrm_url' => ['label' => 'Website', 'ph' => 'https://…'],
+        'nrm_instagram' => ['label' => 'Instagram', 'ph' => '@handle or URL'],
+        'nrm_facebook' => ['label' => 'Facebook', 'ph' => 'profile URL'],
+        'nrm_linkedin' => ['label' => 'LinkedIn', 'ph' => 'profile URL'],
+        'nrm_venmo' => ['label' => 'Venmo (tips)', 'ph' => '@handle'],
+        'nrm_zelle' => ['label' => 'Zelle (tips)', 'ph' => 'email or phone'],
+        'nrm_applecash' => ['label' => 'Apple Cash (tips)', 'ph' => 'phone number'],
+    ];
+    foreach ($social as $key => $f) {
+        $v = get_post_meta($post->ID, $key, true);
+        echo '<tr><th><label for="'.$key.'">'.$f['label'].'</label></th><td>';
+        echo '<input type="text" name="'.$key.'" id="'.$key.'" value="'.esc_attr($v).'" class="regular-text" placeholder="'.esc_attr($f['ph']).'">';
+        echo '</td></tr>';
+    }
     echo '</tbody></table>';
+}
+
+// Plain-language consent shown when a member opts into a public profile.
+function nrm_public_consent_text() {
+    return "Turning this on shows your name, photo, certifications, and school in the public NRM "
+         . "directory so students and fellow instructors can find you. Please keep it professional — "
+         . "this is a directory for your work as a snowsports instructor. You can turn it off anytime.";
 }
 
 function nrm_event_meta_box($post) {
@@ -225,6 +256,20 @@ function nrm_event_meta_box($post) {
         echo '<input type="'.$f['type'].'" name="'.$key.'" id="'.$key.'" value="'.esc_attr($v).'" class="regular-text">';
         echo '</td></tr>';
     }
+    // CEU eligibility + hours
+    $ceu = get_post_meta($post->ID, 'nrm_event_ceu', true);
+    $ceu_hours = get_post_meta($post->ID, 'nrm_event_ceu_hours', true);
+    echo '<tr><th><label for="nrm_event_ceu">CEU-eligible</label></th><td>';
+    echo '<label><input type="checkbox" name="nrm_event_ceu" id="nrm_event_ceu" value="1" '.checked($ceu, '1', false).'> Counts toward continuing education</label> ';
+    echo '&nbsp; Hours: <input type="number" step="0.5" min="0" name="nrm_event_ceu_hours" value="'.esc_attr($ceu_hours).'" style="width:80px;"></td></tr>';
+    // State
+    $state = get_post_meta($post->ID, 'nrm_event_state', true);
+    echo '<tr><th><label for="nrm_event_state">State</label></th><td><select name="nrm_event_state" id="nrm_event_state">';
+    echo '<option value="">—</option>';
+    foreach (['MT'=>'Montana','WY'=>'Wyoming','ND'=>'North Dakota','SD'=>'South Dakota','ID'=>'Idaho','UT'=>'Utah','Other'=>'Other'] as $ab=>$nm) {
+        echo '<option value="'.esc_attr($ab).'" '.selected($state,$ab,false).'>'.esc_html($nm).'</option>';
+    }
+    echo '</select></td></tr>';
     echo '</tbody></table>';
 }
 
@@ -246,12 +291,20 @@ function nrm_save_member_meta($post_id) {
     foreach (['nrm_email','nrm_member_since','nrm_bio','nrm_board_title','nrm_staff_title','nrm_chair_title','nrm_in_progress','nrm_how_to_book','nrm_certifications'] as $k) {
         if (isset($_POST[$k])) update_post_meta($post_id, $k, sanitize_textarea_field($_POST[$k]));
     }
+    // Social + tip handles (plain text; rendered/validated at output)
+    foreach (['nrm_url','nrm_instagram','nrm_facebook','nrm_linkedin','nrm_venmo','nrm_zelle','nrm_applecash'] as $k) {
+        if (isset($_POST[$k])) update_post_meta($post_id, $k, sanitize_text_field($_POST[$k]));
+    }
+    update_post_meta($post_id, 'nrm_public', isset($_POST['nrm_public']) ? '1' : '');
 }
 add_action('save_post_nrm_member', 'nrm_save_member_meta');
 
 function nrm_save_event_meta($post_id) {
     if (!isset($_POST['nrm_event_nonce']) || !wp_verify_nonce($_POST['nrm_event_nonce'], 'nrm_event_meta')) return;
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    update_post_meta($post_id, 'nrm_event_ceu', isset($_POST['nrm_event_ceu']) ? '1' : '');
+    if (isset($_POST['nrm_event_ceu_hours'])) update_post_meta($post_id, 'nrm_event_ceu_hours', (float) $_POST['nrm_event_ceu_hours']);
+    if (isset($_POST['nrm_event_state'])) update_post_meta($post_id, 'nrm_event_state', sanitize_text_field($_POST['nrm_event_state']));
     foreach (['nrm_event_start','nrm_event_end','nrm_event_location','nrm_event_price','nrm_event_reg_url'] as $k) {
         if (isset($_POST[$k])) update_post_meta($post_id, $k, sanitize_text_field($_POST[$k]));
     }
@@ -277,6 +330,47 @@ function nrm_get_person_title($post_id) {
     if ($staff) $titles[] = $staff;
     if ($chair) $titles[] = $chair;
     return implode(' · ', $titles);
+}
+
+// ── Helper: render a member's social + tip links ──
+function nrm_render_member_links($post_id) {
+    $url = get_post_meta($post_id, 'nrm_url', true);
+    $ig  = get_post_meta($post_id, 'nrm_instagram', true);
+    $fb  = get_post_meta($post_id, 'nrm_facebook', true);
+    $li  = get_post_meta($post_id, 'nrm_linkedin', true);
+    $venmo = get_post_meta($post_id, 'nrm_venmo', true);
+    $zelle = get_post_meta($post_id, 'nrm_zelle', true);
+    $apple = get_post_meta($post_id, 'nrm_applecash', true);
+    $norm = function ($v) { return (strpos($v, 'http') === 0) ? $v : 'https://' . ltrim($v, '@/'); };
+    $social = [];
+    if ($url) $social[] = ['Website', $norm($url), 'external-link'];
+    if ($ig)  $social[] = ['Instagram', (strpos($ig,'http')===0?$ig:'https://instagram.com/'.ltrim($ig,'@/')), 'external-link'];
+    if ($fb)  $social[] = ['Facebook', $norm($fb), 'external-link'];
+    if ($li)  $social[] = ['LinkedIn', $norm($li), 'external-link'];
+    $out = '';
+    if ($social) {
+        $out .= '<div class="member-social" style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem;">';
+        foreach ($social as $s) {
+            $out .= '<a href="'.esc_url($s[1]).'" target="_blank" rel="noopener me" class="btn btn-secondary" style="background:var(--ice);color:var(--psia-teal);border:1px solid var(--border-light);padding:0.4rem 0.75rem;font-size:0.8125rem;">'.nrm_icon($s[2],14).' '.esc_html($s[0]).'</a>';
+        }
+        $out .= '</div>';
+    }
+    // Tips
+    $tips = [];
+    if ($venmo) $tips[] = ['Venmo', 'https://venmo.com/u/'.ltrim($venmo,'@/'), ltrim($venmo,'@')];
+    if ($zelle) $tips[] = ['Zelle', '', $zelle];
+    if ($apple) $tips[] = ['Apple Cash', '', $apple];
+    if ($tips) {
+        $out .= '<div class="member-tips card" style="margin-top:0.75rem;padding:0.85rem 1rem;background:var(--psia-teal-light);border-color:var(--psia-teal-mid);">';
+        $out .= '<div style="font-size:0.8125rem;font-weight:700;color:var(--psia-teal);display:flex;align-items:center;gap:0.4rem;">'.nrm_icon('credit-card',15).' Show your appreciation</div>';
+        $out .= '<div style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-top:0.4rem;font-size:0.8125rem;">';
+        foreach ($tips as $t) {
+            if ($t[1]) $out .= '<a href="'.esc_url($t[1]).'" target="_blank" rel="noopener">'.esc_html($t[0]).': '.esc_html($t[2]).'</a>';
+            else $out .= '<span class="text-secondary">'.esc_html($t[0]).': <strong>'.esc_html($t[2]).'</strong></span>';
+        }
+        $out .= '</div></div>';
+    }
+    return $out;
 }
 
 // ── Helper: Render a member card ──
@@ -416,6 +510,66 @@ function nrm_events_query($limit = 6, $extra_tax = null) {
         'meta_query' => [['key' => 'nrm_event_start', 'value' => $today, 'compare' => '<', 'type' => 'DATE']]]);
     return [$recent, false];
 }
+
+// ── ICS calendar export / subscription ──
+// /?nrm_ics=<id>  → single event .ics
+// /?nrm_ics=all   → all upcoming events feed (optionally &discipline=&type=&ceu=1)
+function nrm_ics_escape($s) {
+    return preg_replace('/([,;\\\\])/', '\\\\$1', str_replace("\n", '\\n', wp_strip_all_tags((string)$s)));
+}
+function nrm_ics_vevent($post_id) {
+    $start = get_post_meta($post_id, 'nrm_event_start', true);
+    if (!$start) return '';
+    $end = get_post_meta($post_id, 'nrm_event_end', true) ?: $start;
+    $dtstart = date('Ymd', strtotime($start));
+    $dtend = date('Ymd', strtotime($end . ' +1 day')); // all-day DTEND is exclusive
+    $loc = get_post_meta($post_id, 'nrm_event_location', true);
+    $state = get_post_meta($post_id, 'nrm_event_state', true);
+    $reg = get_post_meta($post_id, 'nrm_event_reg_url', true);
+    $ceu = get_post_meta($post_id, 'nrm_event_ceu', true);
+    $ceu_h = get_post_meta($post_id, 'nrm_event_ceu_hours', true);
+    $desc = wp_strip_all_tags(get_post_field('post_content', $post_id));
+    if ($ceu) $desc .= "\nCEU-eligible" . ($ceu_h ? " ({$ceu_h} hours)" : '');
+    if ($reg) $desc .= "\nRegister: " . $reg;
+    $out  = "BEGIN:VEVENT\r\n";
+    $out .= "UID:nrm-event-{$post_id}@northernrocky.org\r\n";
+    $out .= "DTSTAMP:" . gmdate('Ymd\THis\Z') . "\r\n";
+    $out .= "DTSTART;VALUE=DATE:{$dtstart}\r\n";
+    $out .= "DTEND;VALUE=DATE:{$dtend}\r\n";
+    $out .= "SUMMARY:" . nrm_ics_escape(get_the_title($post_id)) . "\r\n";
+    if ($loc) $out .= "LOCATION:" . nrm_ics_escape(trim($loc . ($state ? ", $state" : ''), ', ')) . "\r\n";
+    if ($desc) $out .= "DESCRIPTION:" . nrm_ics_escape($desc) . "\r\n";
+    $out .= "URL:" . esc_url_raw(get_permalink($post_id)) . "\r\n";
+    $out .= "END:VEVENT\r\n";
+    return $out;
+}
+add_action('template_redirect', function () {
+    $req = isset($_GET['nrm_ics']) ? sanitize_text_field($_GET['nrm_ics']) : '';
+    if ($req === '') return;
+    $events = [];
+    if (ctype_digit($req)) {
+        if (get_post_type((int)$req) === 'nrm_event') $events = [(int)$req];
+    } else {
+        $args = ['post_type' => 'nrm_event', 'posts_per_page' => 500, 'fields' => 'ids',
+                 'meta_key' => 'nrm_event_start', 'orderby' => 'meta_value', 'order' => 'ASC',
+                 'meta_query' => [['key' => 'nrm_event_start', 'value' => date('Y-m-d'), 'compare' => '>=', 'type' => 'DATE']]];
+        $tax = [];
+        if (!empty($_GET['discipline'])) $tax[] = ['taxonomy'=>'nrm_discipline','field'=>'slug','terms'=>sanitize_title($_GET['discipline'])];
+        if (!empty($_GET['type']))       $tax[] = ['taxonomy'=>'nrm_event_type','field'=>'slug','terms'=>sanitize_title($_GET['type'])];
+        if ($tax) $args['tax_query'] = $tax;
+        if (!empty($_GET['ceu']))        $args['meta_query'][] = ['key'=>'nrm_event_ceu','value'=>'1'];
+        $events = get_posts($args);
+    }
+    $cal  = "BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//PSIA-NRM//Events//EN\r\nCALSCALE:GREGORIAN\r\nMETHOD:PUBLISH\r\n";
+    $cal .= "X-WR-CALNAME:PSIA-NRM Events\r\nNAME:PSIA-NRM Events\r\n";
+    foreach ($events as $id) $cal .= nrm_ics_vevent($id);
+    $cal .= "END:VCALENDAR\r\n";
+    nocache_headers();
+    header('Content-Type: text/calendar; charset=utf-8');
+    header('Content-Disposition: attachment; filename="nrm-events.ics"');
+    echo $cal;
+    exit;
+});
 
 // ── Admin Dashboard ──
 function nrm_dashboard_widgets() {

@@ -12,7 +12,8 @@ function nrm_maybe_import_data() {
     // ── Create taxonomy terms ──
 
     $roles = ['Member', 'Board Member', 'Education Staff', 'Discipline Chair', 'Specialty Chair',
-              'Office Staff', 'Iron Team', 'Examiner', 'National Team Member'];
+              'Office Staff', 'Iron Team', 'Examiner', 'National Team Member',
+              'School Director', 'School Contact', 'School Maintainer'];
     foreach ($roles as $r) { if (!term_exists($r, 'nrm_role')) wp_insert_term($r, 'nrm_role'); }
 
     $disciplines = ['Alpine', 'Snowboard', 'Adaptive', 'Telemark', 'Nordic'];
@@ -238,6 +239,34 @@ function nrm_maybe_import_pages() {
     update_option('nrm_pages_v1_imported', true); // kept for menu-seed ordering
 }
 add_action('admin_init', 'nrm_maybe_import_pages');
+
+// Ensure the school-relationship role tags exist even on already-imported
+// sites (the main role seed is guarded by the v2-imported flag).
+function nrm_ensure_school_roles() {
+    if (!taxonomy_exists('nrm_role')) return;
+    if (get_option('nrm_school_roles_seeded')) return;
+    foreach (['School Director', 'School Contact', 'School Maintainer'] as $r) {
+        if (!term_exists($r, 'nrm_role')) wp_insert_term($r, 'nrm_role');
+    }
+    update_option('nrm_school_roles_seeded', true);
+}
+add_action('admin_init', 'nrm_ensure_school_roles');
+
+// One-time: the seeded members are curated org people already shown publicly on
+// Who's Who, so default them to public so the directory isn't empty. New members
+// added later default to private (opt-in) until a member/staff ticks the box.
+// NOTE: the final public-profile default/consent model is a Nick/board decision.
+function nrm_backfill_public_members() {
+    if (get_option('nrm_public_backfill_done')) return;
+    if (!post_type_exists('nrm_member')) return;
+    $ids = get_posts(['post_type' => 'nrm_member', 'numberposts' => -1, 'fields' => 'ids', 'post_status' => 'publish']);
+    if (!$ids) return; // wait until members are imported
+    foreach ($ids as $id) {
+        if (get_post_meta($id, 'nrm_public', true) === '') update_post_meta($id, 'nrm_public', '1');
+    }
+    update_option('nrm_public_backfill_done', true);
+}
+add_action('admin_init', 'nrm_backfill_public_members');
 
 // ── Certification-level data updates ──
 // Curated corrections to discipline pages' nrm_cert_levels meta
