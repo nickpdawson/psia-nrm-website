@@ -56,9 +56,11 @@ while (have_posts()): the_post();
       <span><?php the_title(); ?></span>
     </nav>
     <div class="flex items-center" style="gap:1.5rem;">
-      <?php if ($photo): ?>
-        <img src="<?php echo home_url($photo); ?>" alt="<?php the_title(); ?>"
-             style="width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid rgba(255,255,255,0.3);flex-shrink:0;">
+      <?php if (has_post_thumbnail()): ?>
+        <?php the_post_thumbnail('medium', [
+          'alt' => get_the_title(),
+          'style' => 'width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:center 20%;border:3px solid rgba(255,255,255,0.3);flex-shrink:0;',
+        ]); ?>
       <?php else: ?>
         <div class="member-avatar member-avatar-lg" style="border:2px solid rgba(255,255,255,0.3);"><?php echo esc_html($initials); ?></div>
       <?php endif; ?>

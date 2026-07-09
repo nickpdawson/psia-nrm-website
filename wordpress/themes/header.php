@@ -18,13 +18,13 @@
   </div>
   <div class="container">
     <div class="header-main">
-      <a href="<?php echo home_url(); ?>" class="header-logo" aria-label="PSIA-AASI Northern Rocky — home">
-        <?php if (file_exists(ABSPATH . 'wp-content/uploads/brand/nrm-logo-2026.svg')): ?>
-          <img src="<?php echo home_url('/wp-content/uploads/brand/nrm-logo-2026.svg'); ?>" alt="PSIA-AASI Northern Rocky">
+      <a href="<?php echo home_url(); ?>" class="header-logo" aria-label="PSIA-AASI Northern Rocky Mountain — home">
+        <?php if (file_exists(ABSPATH . 'wp-content/uploads/brand/nrm-logo-header.png')): ?>
+          <img src="<?php echo home_url('/wp-content/uploads/brand/nrm-logo-header.png'); ?>" alt="PSIA-AASI Northern Rocky Mountain" width="240" height="178">
         <?php elseif (file_exists(ABSPATH . 'wp-content/uploads/psia-nrm-header-logo.png')): ?>
-          <img src="<?php echo home_url('/wp-content/uploads/psia-nrm-header-logo.png'); ?>" alt="PSIA-AASI Northern Rocky">
+          <img src="<?php echo home_url('/wp-content/uploads/psia-nrm-header-logo.png'); ?>" alt="PSIA-AASI Northern Rocky Mountain">
         <?php else: ?>
-          <span style="font-size:1.25rem;font-weight:700;">Northern Rocky</span>
+          <span style="font-size:1.25rem;font-weight:700;">Northern Rocky Mountain</span>
         <?php endif; ?>
       </a>
 

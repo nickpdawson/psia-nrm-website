@@ -292,7 +292,11 @@ function nrm_member_card($post_id, $show_title = true) {
 
     echo '<a href="'.esc_url($link).'" class="card" style="text-decoration:none;color:inherit;">';
     echo '<div class="member-card">';
-    echo '<div class="member-avatar">'.esc_html($initials).'</div>';
+    if (has_post_thumbnail($post_id)) {
+        echo get_the_post_thumbnail($post_id, 'thumbnail', ['class' => 'member-avatar', 'style' => 'object-fit:cover;', 'alt' => esc_attr($name)]);
+    } else {
+        echo '<div class="member-avatar">'.esc_html($initials).'</div>';
+    }
     echo '<div style="min-width:0;">';
     echo '<h3 class="text-teal font-bold" style="margin:0;">'.esc_html($name).'</h3>';
     if ($show_title && $title) echo '<p class="text-secondary text-sm" style="margin:0.125rem 0 0;">'.esc_html($title).'</p>';
