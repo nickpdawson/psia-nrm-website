@@ -18,7 +18,7 @@ function nrm_theme_setup() {
 add_action('after_setup_theme', 'nrm_theme_setup');
 
 function nrm_enqueue_styles() {
-    wp_enqueue_style('nrm-style', get_stylesheet_uri(), [], '2026.4');
+    wp_enqueue_style('nrm-style', get_stylesheet_uri(), [], '2026.5');
     if (is_post_type_archive('nrm_event')) {
         wp_enqueue_script('nrm-events', get_template_directory_uri() . '/js/events.js', [], '2026.1', true);
     }

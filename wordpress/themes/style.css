@@ -420,12 +420,12 @@ img { max-width: 100%; height: auto; }
 .hero-logo { display: block; }
 @media (max-width: 640px) { .hero-logo { height: 96px !important; margin-bottom: 1rem !important; } }
 
-/* Hero brand: contained banner above the tagline, a little wider than the text
-   block. object-fit crops the banner's white top/bottom fade so it reads clean
-   on the teal hero. */
+/* Hero brand: contained transparent banner above the tagline, a little wider
+   than the text block. No crop (it's transparent — edges melt into the teal);
+   drop-shadow follows the artwork's shape rather than a rectangle box. */
 .hero-brand {
-  display: block; width: min(660px, 100%); aspect-ratio: 4.4 / 1;
-  object-fit: cover; object-position: center; border-radius: 10px;
-  margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  display: block; width: min(660px, 100%); height: auto;
+  margin-bottom: 1.25rem;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.28));
 }
-@media (max-width: 640px) { .hero-brand { width: 100%; aspect-ratio: 3.6 / 1; margin-bottom: 1rem; } }
+@media (max-width: 640px) { .hero-brand { width: 100%; margin-bottom: 0.75rem; } }
