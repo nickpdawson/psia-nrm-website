@@ -5,8 +5,8 @@
   <div class="container">
     <div style="max-width:760px;">
       <img class="hero-brand"
-           src="<?php echo home_url('/wp-content/uploads/brand/nrm-hero-banner.jpg'); ?>"
-           alt="PSIA-AASI Northern Rocky Mountain" width="2400" height="728">
+           src="<?php echo home_url('/wp-content/uploads/brand/nrm-hero-banner.png'); ?>"
+           alt="PSIA-AASI Northern Rocky Mountain" width="1800" height="546">
       <h1 style="font-size:clamp(1.75rem,4.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:0.75rem;letter-spacing:-0.02em;color:white;">
         <?php echo nl2br(esc_html(nrm_setting('hero_heading'))); ?>
       </h1>
