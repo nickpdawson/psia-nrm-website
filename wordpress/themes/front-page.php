@@ -1,12 +1,17 @@
 <?php get_header(); ?>
 
-<!-- Hero: contained brand banner above the tagline -->
-<section class="hero" style="padding:2.5rem 0;">
-  <div class="container">
+<!-- Hero: skier photo + gradient, with the brand banner over it -->
+<section class="hero" style="position:relative;overflow:hidden;padding:2.5rem 0;">
+  <div style="position:absolute;inset:0;z-index:0;">
+    <img src="<?php echo esc_url(nrm_hero_image_url()); ?>" alt=""
+         style="width:100%;height:100%;object-fit:cover;object-position:center 30%;">
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg, rgba(3,83,104,0.9) 0%, rgba(4,89,150,0.82) 50%, rgba(3,83,104,0.9) 100%);"></div>
+  </div>
+  <div class="container" style="position:relative;z-index:1;">
     <div style="max-width:760px;">
       <img class="hero-brand"
            src="<?php echo home_url('/wp-content/uploads/brand/nrm-hero-banner.png'); ?>"
-           alt="PSIA-AASI Northern Rocky Mountain" width="1800" height="546">
+           alt="PSIA-AASI Northern Rocky Mountain" width="1320" height="400">
       <h1 style="font-size:clamp(1.75rem,4.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:0.75rem;letter-spacing:-0.02em;color:white;">
         <?php echo nl2br(esc_html(nrm_setting('hero_heading'))); ?>
       </h1>
