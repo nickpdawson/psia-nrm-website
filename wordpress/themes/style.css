@@ -420,8 +420,12 @@ img { max-width: 100%; height: auto; }
 .hero-logo { display: block; }
 @media (max-width: 640px) { .hero-logo { height: 96px !important; margin-bottom: 1rem !important; } }
 
-/* Hero banner (brand banner above the tagline band) — smaller, on the teal
-   background so it reads as one branded top with the header. */
-.hero-banner { height: clamp(150px, 17vw, 280px); overflow: hidden; background: var(--psia-teal); line-height: 0; }
-.hero-banner img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
-@media (max-width: 640px) { .hero-banner { height: clamp(120px, 34vw, 190px); } }
+/* Hero brand: contained banner above the tagline, a little wider than the text
+   block. object-fit crops the banner's white top/bottom fade so it reads clean
+   on the teal hero. */
+.hero-brand {
+  display: block; width: min(660px, 100%); aspect-ratio: 4.4 / 1;
+  object-fit: cover; object-position: center; border-radius: 10px;
+  margin-bottom: 1.5rem; box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+@media (max-width: 640px) { .hero-brand { width: 100%; aspect-ratio: 3.6 / 1; margin-bottom: 1rem; } }
