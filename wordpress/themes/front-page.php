@@ -10,7 +10,7 @@
   <div class="container" style="position:relative;z-index:1;">
     <div style="max-width:760px;">
       <img class="hero-brand"
-           src="<?php echo home_url('/wp-content/uploads/brand/nrm-hero-banner.png'); ?>"
+           src="<?php echo home_url('/wp-content/uploads/brand/nrm-hero-banner.png?v=2'); ?>"
            alt="PSIA-AASI Northern Rocky Mountain" width="1320" height="400">
       <h1 style="font-size:clamp(1.75rem,4.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:0.75rem;letter-spacing:-0.02em;color:white;">
         <?php echo nl2br(esc_html(nrm_setting('hero_heading'))); ?>
